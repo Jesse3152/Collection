@@ -1,0 +1,807 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AC6A9353-FDBC-4656-B056-87A7F72D0FBC}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShoppingCar</RootNamespace>
+    <AssemblyName>ShoppingCar</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CKEditor.NET, Version=3.6.6.2, Culture=neutral, PublicKeyToken=e379cdf2f8354999, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ckeditor\bin\Release\CKEditor.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.5.1\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.5.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.5.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.5.1\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.5.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.5.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\GoodsDispController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cs_Message.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cs_User.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FindTodayMenu.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Firm.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\good.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\goodstag.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\leaveAlone.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Manager.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\member_ad.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\member_infro.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\member_val.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\order_detail.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductMaster.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Purchase.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sale.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShoppingCar.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShoppingCar.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShoppingCar.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShoppingCar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShoppingCar.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\shoppingCart.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShowAll_Result.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShowHistory_Result.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\subsite.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\subsite_class.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\test.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TodayMenu_Result.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TodayOrderPaid_Result.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TodayOrder_Result.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TodayShop_Result.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TotalOrder_Result.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\員工使用記錄.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\員工帳號.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\員工帳號基本資料.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\員工登入資料.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\商品類別.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\回覆留言.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\帳號使用權限.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\收貨地址.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\會員.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\會員住址.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\會員登入記錄.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\權限範圍.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\留言版.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\縣市.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\職稱.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\訂單.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\訂單明細.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\部門.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\郵遞區號.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\頁面主項.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\頁面細項.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\魔格網站資料.cs">
+      <DependentUpon>ShoppingCar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\StyleMessageBoard.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="goodPicture\20160525First.jpg" />
+    <Content Include="goodPicture\20160525Last.jpg" />
+    <Content Include="goodPicture\20160525Next.jpg" />
+    <Content Include="goodPicture\C501_24180616010231_1.jpg" />
+    <Content Include="goodPicture\C501_24180616010231_s.jpg" />
+    <Content Include="goodPicture\C501_24180616010232_2.gif" />
+    <Content Include="goodPicture\C501_24180616010632_1.jpg" />
+    <Content Include="goodPicture\C501_24180616010632_2.jpg" />
+    <Content Include="goodPicture\C501_24180616010632_3.jpg" />
+    <Content Include="goodPicture\C501_24180616010632_s.jpg" />
+    <Content Include="goodPicture\C501_24180616011057_1.jpg" />
+    <Content Include="goodPicture\C501_24180616011057_2.jpg" />
+    <Content Include="goodPicture\C501_24180616011057_3.jpg" />
+    <Content Include="goodPicture\C501_24180616011057_s.jpg" />
+    <Content Include="goodPicture\C501_24180616011422_1.jpg" />
+    <Content Include="goodPicture\C501_24180616011422_2.jpg" />
+    <Content Include="goodPicture\C501_24180616011422_3.jpg" />
+    <Content Include="goodPicture\C501_24180616011422_s.jpg" />
+    <Content Include="goodPicture\C501_24180616011628_1.jpg" />
+    <Content Include="goodPicture\C501_24180616011628_s.jpg" />
+    <Content Include="goodPicture\C501_24180616011846_1.jpg" />
+    <Content Include="goodPicture\C501_24180616011846_s.jpg" />
+    <Content Include="goodPicture\C501_24180616012023_1.jpg" />
+    <Content Include="goodPicture\C501_24180616012023_s.jpg" />
+    <Content Include="goodPicture\C501_24180616012148_1.jpg" />
+    <Content Include="goodPicture\C501_24180616012148_s.jpg" />
+    <Content Include="goodPicture\C501_24180616012558_1.jpg" />
+    <Content Include="goodPicture\C501_24180616012558_2.png" />
+    <Content Include="goodPicture\C501_24180616012558_3.jpg" />
+    <Content Include="goodPicture\C501_24180616012558_s.jpg" />
+    <Content Include="goodPicture\C501_24180616012907_1.jpg" />
+    <Content Include="goodPicture\C501_24180616012907_2.jpg" />
+    <Content Include="goodPicture\C501_24180616012907_3.jpg" />
+    <Content Include="goodPicture\C501_24180616012907_s.jpg" />
+    <Content Include="goodPicture\C501_24180616120013_1.jpg" />
+    <Content Include="goodPicture\C501_24180616120013_2.jpg" />
+    <Content Include="goodPicture\C501_24180616120013_s.jpg" />
+    <Content Include="goodPicture\C501_24180616121115_1.jpg" />
+    <Content Include="goodPicture\C501_24180616121115_2.jpg" />
+    <Content Include="goodPicture\C501_24180616121115_3.jpg" />
+    <Content Include="goodPicture\C501_24180616121115_s.jpg" />
+    <Content Include="goodPicture\C501_24180616121453_1.jpg" />
+    <Content Include="goodPicture\C501_24180616121453_2.jpg" />
+    <Content Include="goodPicture\C501_24180616121453_3.jpg" />
+    <Content Include="goodPicture\C501_24180616121453_s.jpg" />
+    <Content Include="goodPicture\C501_24180616122711_1.jpg" />
+    <Content Include="goodPicture\C501_24180616122711_2.jpg" />
+    <Content Include="goodPicture\C501_24180616122711_3.jpg" />
+    <Content Include="goodPicture\C501_24180616122711_s.jpg" />
+    <Content Include="goodPicture\C501_24180616123122_1.jpg" />
+    <Content Include="goodPicture\C501_24180616123122_2.png" />
+    <Content Include="goodPicture\C501_24180616123122_3.png" />
+    <Content Include="goodPicture\C501_24180616123122_s.jpg" />
+    <Content Include="goodPicture\C501_24180616123656_1.jpg" />
+    <Content Include="goodPicture\C501_24180616123656_2.jpg" />
+    <Content Include="goodPicture\C501_24180616123656_3.jpg" />
+    <Content Include="goodPicture\C501_24180616123656_s.jpg" />
+    <Content Include="goodPicture\C501_24180616124013_1.jpg" />
+    <Content Include="goodPicture\C501_24180616124013_s.jpg" />
+    <Content Include="goodPicture\C501_24180616124420_1.png" />
+    <Content Include="goodPicture\C501_24180616124420_2.png" />
+    <Content Include="goodPicture\C501_24180616124420_3.jpg" />
+    <Content Include="goodPicture\C501_24180616124420_s.png" />
+    <Content Include="goodPicture\C501_24180616125608_1.jpg" />
+    <Content Include="goodPicture\C501_24180616125608_2.jpg" />
+    <Content Include="goodPicture\C501_24180616125608_3.jpg" />
+    <Content Include="goodPicture\C501_24180616125608_s.jpg" />
+    <Content Include="goodPicture\C501_24180616125927_1.jpg" />
+    <Content Include="goodPicture\C501_24180616125927_2.png" />
+    <Content Include="goodPicture\C501_24180616125927_s.jpg" />
+    <Content Include="goodPicture\ewqewq180616115305_1.jpg" />
+    <Content Include="goodPicture\ewqewq180616115305_2.jpg" />
+    <Content Include="goodPicture\ewqewq180616115305_3.jpg" />
+    <Content Include="goodPicture\ewqewq180616115305_s.jpg" />
+    <Content Include="goodPicture\ewqewq180616115626_1.jpg" />
+    <Content Include="goodPicture\ewqewq180616115626_2.jpg" />
+    <Content Include="goodPicture\ewqewq180616115626_3.jpg" />
+    <Content Include="goodPicture\ewqewq180616115626_s.jpg" />
+    <Content Include="goodPicture\ewqewq180616115819_1.jpg" />
+    <Content Include="goodPicture\ewqewq180616115819_s.jpg" />
+    <Content Include="goodPicture\ewqewq180617120231_1.jpg" />
+    <Content Include="goodPicture\ewqewq180617120231_2.jpg" />
+    <Content Include="goodPicture\ewqewq180617120231_3.jpg" />
+    <Content Include="goodPicture\ewqewq180617120231_s.jpg" />
+    <Content Include="goodPicture\ewqewq180617120520_1.jpg" />
+    <Content Include="goodPicture\ewqewq180617120520_2.jpg" />
+    <Content Include="goodPicture\ewqewq180617120520_3.gif" />
+    <Content Include="goodPicture\ewqewq180617120520_s.jpg" />
+    <Content Include="goodPicture\ewqewq180617120803_1.jpg" />
+    <Content Include="goodPicture\ewqewq180617120803_s.jpg" />
+    <Content Include="goodPicture\ewqewq180617120804_2.jpg" />
+    <Content Include="goodPicture\ewqewq180617120804_3.jpg" />
+    <Content Include="goodPicture\ewqewq180617121000_1.jpg" />
+    <Content Include="goodPicture\ewqewq180617121000_2.jpg" />
+    <Content Include="goodPicture\ewqewq180617121000_3.jpg" />
+    <Content Include="goodPicture\ewqewq180617121000_s.jpg" />
+    <Content Include="goodPicture\ewqewq180617121231_1.jpg" />
+    <Content Include="goodPicture\ewqewq180617121231_2.jpg" />
+    <Content Include="goodPicture\ewqewq180617121231_3.jpg" />
+    <Content Include="goodPicture\ewqewq180617121231_s.jpg" />
+    <Content Include="goodPicture\ewqewq180617121456_1.jpg" />
+    <Content Include="goodPicture\ewqewq180617121457_2.jpg" />
+    <Content Include="goodPicture\ewqewq180617121457_3.jpg" />
+    <Content Include="goodPicture\ewqewq180617121457_s.jpg" />
+    <Content Include="goodPicture\ewqewq180617121822_1.jpg" />
+    <Content Include="goodPicture\ewqewq180617121822_2.jpg" />
+    <Content Include="goodPicture\ewqewq180617121822_3.jpg" />
+    <Content Include="goodPicture\ewqewq180617121822_s.jpg" />
+    <Content Include="goodPicture\ewqewq180617122106_1.jpg" />
+    <Content Include="goodPicture\ewqewq180617122106_2.jpg" />
+    <Content Include="goodPicture\ewqewq180617122106_3.jpg" />
+    <Content Include="goodPicture\ewqewq180617122106_s.jpg" />
+    <Content Include="goodPicture\ewqewq180617122342_1.jpg" />
+    <Content Include="goodPicture\ewqewq180617122342_2.jpg" />
+    <Content Include="goodPicture\ewqewq180617122342_3.jpg" />
+    <Content Include="goodPicture\ewqewq180617122342_s.jpg" />
+    <Content Include="goodPicture\iltusyou180616014153_1.jpg" />
+    <Content Include="goodPicture\iltusyou180616014153_s.jpg" />
+    <Content Include="goodPicture\iltusyou180616014706_1.jpg" />
+    <Content Include="goodPicture\iltusyou180616014706_2.jpg" />
+    <Content Include="goodPicture\iltusyou180616014706_3.jpg" />
+    <Content Include="goodPicture\iltusyou180616014706_s.jpg" />
+    <Content Include="goodPicture\iltusyou2180616045600_1.jpg" />
+    <Content Include="goodPicture\iltusyou2180616045600_s.jpg" />
+    <Content Include="goodPicture\iltusyou2180616050408_1.jpg" />
+    <Content Include="goodPicture\iltusyou2180616050408_2.jpg" />
+    <Content Include="goodPicture\iltusyou2180616050408_3.jpg" />
+    <Content Include="goodPicture\iltusyou2180616050408_s.jpg" />
+    <Content Include="goodPicture\iltusyou2180616051241_1.jpg" />
+    <Content Include="goodPicture\iltusyou2180616051241_2.jpg" />
+    <Content Include="goodPicture\iltusyou2180616051241_3.jpg" />
+    <Content Include="goodPicture\iltusyou2180616051241_s.jpg" />
+    <Content Include="goodPicture\iltusyou2180616052248_1.jpg" />
+    <Content Include="goodPicture\iltusyou2180616052248_s.jpg" />
+    <Content Include="goodPicture\iltusyou2180616052558_1.jpg" />
+    <Content Include="goodPicture\iltusyou2180616052558_2.jpg" />
+    <Content Include="goodPicture\iltusyou2180616052558_s.jpg" />
+    <Content Include="goodPicture\iltusyou2180616052957_1.jpg" />
+    <Content Include="goodPicture\iltusyou2180616052957_2.jpg" />
+    <Content Include="goodPicture\iltusyou2180616052957_3.jpg" />
+    <Content Include="goodPicture\iltusyou2180616052957_s.jpg" />
+    <Content Include="goodPicture\iltusyou2180616053624_1.jpg" />
+    <Content Include="goodPicture\iltusyou2180616053624_2.jpg" />
+    <Content Include="goodPicture\iltusyou2180616053624_3.jpg" />
+    <Content Include="goodPicture\iltusyou2180616053624_s.jpg" />
+    <Content Include="goodPicture\iltusyou2180616054129_1.jpg" />
+    <Content Include="goodPicture\iltusyou2180616054129_2.jpg" />
+    <Content Include="goodPicture\iltusyou2180616054129_3.jpg" />
+    <Content Include="goodPicture\iltusyou2180616054129_s.jpg" />
+    <Content Include="goodPicture\iltusyou2180616054416_1.jpg" />
+    <Content Include="goodPicture\iltusyou2180616054416_s.jpg" />
+    <Content Include="goodPicture\iltusyou2180616060123_1.jpg" />
+    <Content Include="goodPicture\iltusyou2180616060123_2.jpg" />
+    <Content Include="goodPicture\iltusyou2180616060123_3.jpg" />
+    <Content Include="goodPicture\iltusyou2180616060123_s.jpg" />
+    <Content Include="goodPicture\iltusyou2180616060636_1.jpg" />
+    <Content Include="goodPicture\iltusyou2180616060636_s.jpg" />
+    <Content Include="goodPicture\iltusyou2180616061052_1.jpg" />
+    <Content Include="goodPicture\iltusyou2180616061052_2.jpg" />
+    <Content Include="goodPicture\iltusyou2180616061052_3.jpg" />
+    <Content Include="goodPicture\iltusyou2180616061052_s.jpg" />
+    <Content Include="goodPicture\iltusyou2180616061748_1.jpg" />
+    <Content Include="goodPicture\iltusyou2180616061748_2.jpg" />
+    <Content Include="goodPicture\iltusyou2180616061748_3.jpg" />
+    <Content Include="goodPicture\iltusyou2180616061748_s.jpg" />
+    <Content Include="goodPicture\iltusyou2180616063001_1.jpg" />
+    <Content Include="goodPicture\iltusyou2180616063001_2.jpg" />
+    <Content Include="goodPicture\iltusyou2180616063001_3.jpg" />
+    <Content Include="goodPicture\iltusyou2180616063001_s.jpg" />
+    <Content Include="goodPicture\iltusyou2180616063729_1.jpg" />
+    <Content Include="goodPicture\iltusyou2180616063729_2.jpg" />
+    <Content Include="goodPicture\iltusyou2180616063729_3.jpg" />
+    <Content Include="goodPicture\iltusyou2180616063729_s.jpg" />
+    <Content Include="goodPicture\iltusyou2180616064238_1.jpg" />
+    <Content Include="goodPicture\iltusyou2180616064238_2.jpg" />
+    <Content Include="goodPicture\iltusyou2180616064238_3.jpg" />
+    <Content Include="goodPicture\iltusyou2180616064238_s.jpg" />
+    <Content Include="goodPicture\iltusyou2180616064917_1.jpg" />
+    <Content Include="goodPicture\iltusyou2180616064917_2.png" />
+    <Content Include="goodPicture\iltusyou2180616064917_3.png" />
+    <Content Include="goodPicture\iltusyou2180616064917_s.jpg" />
+    <Content Include="goodPicture\jesse999180617122803_1.jpg" />
+    <Content Include="goodPicture\jesse999180617122803_2.jpg" />
+    <Content Include="goodPicture\jesse999180617122803_3.jpg" />
+    <Content Include="goodPicture\jesse999180617122803_s.jpg" />
+    <Content Include="goodPicture\jesse999180617123123_1.jpg" />
+    <Content Include="goodPicture\jesse999180617123123_2.jpg" />
+    <Content Include="goodPicture\jesse999180617123123_3.jpg" />
+    <Content Include="goodPicture\jesse999180617123123_s.jpg" />
+    <Content Include="goodPicture\jesse999180617123320_1.jpg" />
+    <Content Include="goodPicture\jesse999180617123320_2.jpg" />
+    <Content Include="goodPicture\jesse999180617123320_3.jpg" />
+    <Content Include="goodPicture\jesse999180617123320_s.jpg" />
+    <Content Include="goodPicture\jesse999180617123756_1.jpg" />
+    <Content Include="goodPicture\jesse999180617123756_2.jpg" />
+    <Content Include="goodPicture\jesse999180617123756_3.jpg" />
+    <Content Include="goodPicture\jesse999180617123756_s.jpg" />
+    <Content Include="goodPicture\jesse999180617124056_1.jpg" />
+    <Content Include="goodPicture\jesse999180617124056_2.jpg" />
+    <Content Include="goodPicture\jesse999180617124056_3.jpg" />
+    <Content Include="goodPicture\jesse999180617124056_s.jpg" />
+    <Content Include="goodPicture\jesse999180617124416_1.jpg" />
+    <Content Include="goodPicture\jesse999180617124416_2.jpg" />
+    <Content Include="goodPicture\jesse999180617124416_3.jpg" />
+    <Content Include="goodPicture\jesse999180617124416_s.jpg" />
+    <Content Include="goodPicture\LOGO01.png" />
+    <Content Include="goodPicture\Member01180616065507_1.jpg" />
+    <Content Include="goodPicture\Member01180616065507_2.jpg" />
+    <Content Include="goodPicture\Member01180616065507_3.jpg" />
+    <Content Include="goodPicture\Member01180616065507_s.jpg" />
+    <Content Include="goodPicture\Member01180616065813_1.jpg" />
+    <Content Include="goodPicture\Member01180616065813_2.jpg" />
+    <Content Include="goodPicture\Member01180616065813_3.jpg" />
+    <Content Include="goodPicture\Member01180616065813_s.jpg" />
+    <Content Include="goodPicture\Member01180616070151_1.jpg" />
+    <Content Include="goodPicture\Member01180616070151_2.jpg" />
+    <Content Include="goodPicture\Member01180616070151_s.jpg" />
+    <Content Include="goodPicture\Member01180616070357_1.jpg" />
+    <Content Include="goodPicture\Member01180616070357_2.jpg" />
+    <Content Include="goodPicture\Member01180616070357_s.jpg" />
+    <Content Include="goodPicture\Member01180616080911_1.jpg" />
+    <Content Include="goodPicture\Member01180616080911_2.png" />
+    <Content Include="goodPicture\Member01180616080911_3.jpg" />
+    <Content Include="goodPicture\Member01180616080911_s.jpg" />
+    <Content Include="goodPicture\Member01180616081144_1.jpg" />
+    <Content Include="goodPicture\Member01180616081144_2.jpg" />
+    <Content Include="goodPicture\Member01180616081144_3.jpg" />
+    <Content Include="goodPicture\Member01180616081144_s.jpg" />
+    <Content Include="goodPicture\Member01180616081613_1.jpg" />
+    <Content Include="goodPicture\Member01180616081613_2.jpg" />
+    <Content Include="goodPicture\Member01180616081613_3.jpg" />
+    <Content Include="goodPicture\Member01180616081613_s.jpg" />
+    <Content Include="goodPicture\Member01180616081850_1.jpg" />
+    <Content Include="goodPicture\Member01180616081850_2.jpg" />
+    <Content Include="goodPicture\Member01180616081850_3.jpg" />
+    <Content Include="goodPicture\Member01180616081850_s.jpg" />
+    <Content Include="goodPicture\Member01180616082151_1.jpg" />
+    <Content Include="goodPicture\Member01180616082151_2.jpg" />
+    <Content Include="goodPicture\Member01180616082151_s.jpg" />
+    <Content Include="goodPicture\Member01180616082449_1.jpg" />
+    <Content Include="goodPicture\Member01180616082449_2.jpg" />
+    <Content Include="goodPicture\Member01180616082449_3.jpg" />
+    <Content Include="goodPicture\Member01180616082449_s.jpg" />
+    <Content Include="goodPicture\Member01180616082854_1.jpg" />
+    <Content Include="goodPicture\Member01180616082854_2.jpg" />
+    <Content Include="goodPicture\Member01180616082854_3.jpg" />
+    <Content Include="goodPicture\Member01180616082854_s.jpg" />
+    <Content Include="goodPicture\Member01180616083351_1.jpg" />
+    <Content Include="goodPicture\Member01180616083351_2.jpg" />
+    <Content Include="goodPicture\Member01180616083351_s.jpg" />
+    <Content Include="goodPicture\Member01180616083639_1.jpg" />
+    <Content Include="goodPicture\Member01180616083639_2.jpg" />
+    <Content Include="goodPicture\Member01180616083639_s.jpg" />
+    <Content Include="goodPicture\Member01180616083957_1.jpg" />
+    <Content Include="goodPicture\Member01180616083957_2.jpg" />
+    <Content Include="goodPicture\Member01180616083957_3.jpg" />
+    <Content Include="goodPicture\Member01180616083957_s.jpg" />
+    <Content Include="goodPicture\Member01180616084322_1.jpg" />
+    <Content Include="goodPicture\Member01180616084322_s.jpg" />
+    <Content Include="goodPicture\Member01180616084323_2.jpg" />
+    <Content Include="goodPicture\Member01180616084323_3.jpg" />
+    <Content Include="goodPicture\Member01180616085350_1.jpg" />
+    <Content Include="goodPicture\Member01180616085350_2.jpg" />
+    <Content Include="goodPicture\Member01180616085350_3.jpg" />
+    <Content Include="goodPicture\Member01180616085350_s.jpg" />
+    <Content Include="goodPicture\Member01180616085744_1.jpg" />
+    <Content Include="goodPicture\Member01180616085744_2.jpg" />
+    <Content Include="goodPicture\Member01180616085744_3.jpg" />
+    <Content Include="goodPicture\Member01180616085744_s.jpg" />
+    <Content Include="goodPicture\Member01180616090307_1.jpg" />
+    <Content Include="goodPicture\Member01180616090307_2.jpg" />
+    <Content Include="goodPicture\Member01180616090307_3.jpg" />
+    <Content Include="goodPicture\Member01180616090307_s.jpg" />
+    <Content Include="goodPicture\Member01180616090618_1.jpg" />
+    <Content Include="goodPicture\Member01180616090618_2.jpg" />
+    <Content Include="goodPicture\Member01180616090618_s.jpg" />
+    <Content Include="goodPicture\Member01180616090953_1.jpg" />
+    <Content Include="goodPicture\Member01180616090953_2.jpg" />
+    <Content Include="goodPicture\Member01180616090953_3.jpg" />
+    <Content Include="goodPicture\Member01180616090953_s.jpg" />
+    <Content Include="goodPicture\Member01180616091857_1.jpg" />
+    <Content Include="goodPicture\Member01180616091857_2.jpg" />
+    <Content Include="goodPicture\Member01180616091857_3.jpg" />
+    <Content Include="goodPicture\Member01180616091857_s.jpg" />
+    <Content Include="goodPicture\Member01180616092304_1.jpg" />
+    <Content Include="goodPicture\Member01180616092304_2.jpg" />
+    <Content Include="goodPicture\Member01180616092304_3.jpg" />
+    <Content Include="goodPicture\Member01180616092304_s.jpg" />
+    <Content Include="goodPicture\Member01180616092542_1.jpg" />
+    <Content Include="goodPicture\Member01180616092542_2.jpg" />
+    <Content Include="goodPicture\Member01180616092542_3.jpg" />
+    <Content Include="goodPicture\Member01180616092542_s.jpg" />
+    <Content Include="goodPicture\Member01180616092822_1.jpg" />
+    <Content Include="goodPicture\Member01180616092822_2.jpg" />
+    <Content Include="goodPicture\Member01180616092822_s.jpg" />
+    <Content Include="goodPicture\Member01180616093030_1.jpg" />
+    <Content Include="goodPicture\Member01180616093030_2.jpg" />
+    <Content Include="goodPicture\Member01180616093030_s.jpg" />
+    <Content Include="goodPicture\Member01180616093200_1.jpg" />
+    <Content Include="goodPicture\Member01180616093200_s.jpg" />
+    <Content Include="goodPicture\Member01180616093340_1.jpg" />
+    <Content Include="goodPicture\Member01180616093340_s.jpg" />
+    <Content Include="goodPicture\Member01180616093504_1.jpg" />
+    <Content Include="goodPicture\Member01180616093504_s.jpg" />
+    <Content Include="goodPicture\Member01180616093624_1.jpg" />
+    <Content Include="goodPicture\Member01180616093624_s.jpg" />
+    <Content Include="goodPicture\Member01180616093736_1.jpg" />
+    <Content Include="goodPicture\Member01180616093736_s.jpg" />
+    <Content Include="goodPicture\Member01180616094051_1.jpg" />
+    <Content Include="goodPicture\Member01180616094051_2.jpg" />
+    <Content Include="goodPicture\Member01180616094051_3.jpg" />
+    <Content Include="goodPicture\Member01180616094051_s.jpg" />
+    <Content Include="goodPicture\Member01180616094344_1.jpg" />
+    <Content Include="goodPicture\Member01180616094344_2.jpg" />
+    <Content Include="goodPicture\Member01180616094344_3.jpg" />
+    <Content Include="goodPicture\Member01180616094344_s.jpg" />
+    <Content Include="goodPicture\Member01180616094624_1.jpg" />
+    <Content Include="goodPicture\Member01180616094624_2.jpg" />
+    <Content Include="goodPicture\Member01180616094624_3.jpg" />
+    <Content Include="goodPicture\Member01180616094624_s.jpg" />
+    <Content Include="goodPicture\Member01180616094954_1.jpg" />
+    <Content Include="goodPicture\Member01180616094954_2.jpg" />
+    <Content Include="goodPicture\Member01180616094954_3.jpg" />
+    <Content Include="goodPicture\Member01180616094954_s.jpg" />
+    <Content Include="goodPicture\Member01180616095040_2.jpg" />
+    <Content Include="goodPicture\Member01180616095800_1.jpg" />
+    <Content Include="goodPicture\Member01180616095800_2.jpg" />
+    <Content Include="goodPicture\Member01180616095800_3.jpg" />
+    <Content Include="goodPicture\Member01180616095800_s.jpg" />
+    <Content Include="goodPicture\Member01180616100407_1.jpg" />
+    <Content Include="goodPicture\Member01180616100407_2.jpg" />
+    <Content Include="goodPicture\Member01180616100407_3.jpg" />
+    <Content Include="goodPicture\Member01180616100407_s.jpg" />
+    <Content Include="goodPicture\Member01180616100930_1.jpg" />
+    <Content Include="goodPicture\Member01180616100930_s.jpg" />
+    <Content Include="goodPicture\Member01180616101150_1.jpg" />
+    <Content Include="goodPicture\Member01180616101150_2.jpg" />
+    <Content Include="goodPicture\Member01180616101150_3.jpg" />
+    <Content Include="goodPicture\Member01180616101150_s.jpg" />
+    <Content Include="goodPicture\Member01180616101327_2.jpg" />
+    <Content Include="goodPicture\Member01180616101327_3.jpg" />
+    <Content Include="goodPicture\Member01180616101406_1.jpg" />
+    <Content Include="goodPicture\Member01180616101406_2.jpg" />
+    <Content Include="goodPicture\Member01180616101406_3.jpg" />
+    <Content Include="goodPicture\Member01180616101406_s.jpg" />
+    <Content Include="goodPicture\Member01180616101427_2.jpg" />
+    <Content Include="goodPicture\Member01180616101938_1.jpg" />
+    <Content Include="goodPicture\Member01180616101938_2.jpg" />
+    <Content Include="goodPicture\Member01180616101938_3.jpg" />
+    <Content Include="goodPicture\Member01180616101938_s.jpg" />
+    <Content Include="goodPicture\Member01180616102007_2.jpg" />
+    <Content Include="goodPicture\Member01180616102007_3.jpg" />
+    <Content Include="Models\ShoppingCar.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShoppingCar.edmx</DependentUpon>
+      <LastGenOutput>ShoppingCar.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ShoppingCar.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShoppingCar.edmx</DependentUpon>
+      <LastGenOutput>ShoppingCar.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\ShoppingCar.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ShoppingCar.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ShoppingCar.edmx.diagram">
+      <DependentUpon>ShoppingCar.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\GoodsDisp\Index.cshtml" />
+    <Content Include="Views\GoodsDisp\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="bin\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2967</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2967/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此專案參考這部電腦上所缺少的 NuGet 封裝。請啟用 NuGet 封裝還原，以下載該封裝。如需詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的檔案是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

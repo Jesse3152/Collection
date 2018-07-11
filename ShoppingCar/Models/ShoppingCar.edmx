@@ -1,0 +1,1791 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ShoppingCarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cs_Message">
+          <Key>
+            <PropertyRef Name="cm_sid" />
+            <PropertyRef Name="cu_sid" />
+          </Key>
+          <Property Name="cm_sid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cu_sid" Type="int" Nullable="false" />
+          <Property Name="cm_time" Type="datetime" Nullable="false" />
+          <Property Name="cm_object" Type="tinyint" Nullable="false" />
+          <Property Name="cm_desc" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="cm_end" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cs_User">
+          <Key>
+            <PropertyRef Name="cu_sid" />
+          </Key>
+          <Property Name="cu_sid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cu_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cu_rtn" Type="tinyint" Nullable="false" />
+          <Property Name="cu_time" Type="datetime" Nullable="false" />
+          <Property Name="cu_utime" Type="datetime" Nullable="false" />
+          <Property Name="cu_stime" Type="datetime" Nullable="false" />
+          <Property Name="mg_sid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Firm">
+          <Key>
+            <PropertyRef Name="Firm_ID" />
+          </Key>
+          <Property Name="Firm_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firm_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Firm_Tel" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Firm_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Firm_Address" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Firm_Contact" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Firm_Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ChangeDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="goods">
+          <Key>
+            <PropertyRef Name="商品編號" />
+          </Key>
+          <Property Name="商品編號" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="帳號" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="商品名稱" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="商品摘要" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="商品明細" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="庫存量" Type="int" Nullable="false" />
+          <Property Name="單價" Type="money" Nullable="false" />
+          <Property Name="上架時間" Type="smalldatetime" Nullable="false" />
+          <Property Name="下架時間" Type="smalldatetime" Nullable="false" />
+          <Property Name="商品小圖片" Type="varchar" MaxLength="50" />
+          <Property Name="商品大圖片1" Type="varchar" MaxLength="50" />
+          <Property Name="商品大圖片2" Type="varchar" MaxLength="50" />
+          <Property Name="商品大圖片3" Type="varchar" MaxLength="50" />
+          <Property Name="編輯" Type="varchar(max)" />
+          <Property Name="商品類別代碼" Type="int" Nullable="false" />
+          <Property Name="停權" Type="bit" />
+        </EntityType>
+        <EntityType Name="goodstag">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tagname" Type="nvarchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="leaveAlone">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MembersCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="JobTitle" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FromTime" Type="datetime" Nullable="false" />
+          <Property Name="TimeUp" Type="datetime" Nullable="false" />
+          <Property Name="ByDuties" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ApplicationTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="mg_sid" />
+          </Key>
+          <Property Name="mg_sid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mg_name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="last_date" Type="datetime" Nullable="false" />
+          <Property Name="mg_id" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="member_ad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Zipcode" Type="char" MaxLength="3" />
+          <Property Name="city" Type="nchar" MaxLength="3" />
+          <Property Name="country" Type="nvarchar" MaxLength="8" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="member_infro">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="20" />
+          <Property Name="nikename" Type="nvarchar" MaxLength="16" />
+          <Property Name="gender" Type="bit" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="phone1" Type="varchar" MaxLength="12" />
+          <Property Name="phone2" Type="varchar" MaxLength="12" />
+          <Property Name="birthday_y" Type="date" />
+          <Property Name="birthday_m" Type="date" />
+          <Property Name="birthday_d" Type="date" />
+          <Property Name="address" Type="bigint" />
+        </EntityType>
+        <EntityType Name="member_val">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="account" Type="varchar" MaxLength="16" />
+          <Property Name="password" Type="varchar" MaxLength="16" />
+          <Property Name="enable" Type="bit" />
+        </EntityType>
+        <EntityType Name="ProductMaster">
+          <Key>
+            <PropertyRef Name="Product_ID" />
+          </Key>
+          <Property Name="Product_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Product_Gencod" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Safe_Stock" Type="bigint" Nullable="false" />
+          <Property Name="Stock" Type="int" Nullable="false" />
+          <Property Name="ChangeDate" Type="datetime" Nullable="false" />
+          <Property Name="pciture" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="Purchase_ID" />
+          </Key>
+          <Property Name="Purchase_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firm_ID" Type="int" Nullable="false" />
+          <Property Name="Product_ID" Type="int" Nullable="false" />
+          <Property Name="IN_Quantity" Type="int" Nullable="false" />
+          <Property Name="Purchase_Price" Type="money" Nullable="false" />
+          <Property Name="IN_Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="Sale_ID" />
+          </Key>
+          <Property Name="Sale_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_ID" Type="int" Nullable="false" />
+          <Property Name="Sale_Quantity" Type="int" Nullable="false" />
+          <Property Name="Sale_Price" Type="money" Nullable="false" />
+          <Property Name="SaleDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="shoppingCart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="member_id" Type="nchar" MaxLength="10" />
+          <Property Name="goods_id" Type="nchar" MaxLength="10" />
+          <Property Name="quantity" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'ShoppingCar.dbo.subsite' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="subsite">
+          <Key>
+            <PropertyRef Name="subsite_id" />
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="subsite_id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="descrip" Type="varchar" MaxLength="300" />
+          <Property Name="subsite_class" Type="int" />
+          <Property Name="title_image" Type="varchar" MaxLength="20" />
+          <Property Name="subsite_logo" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="subsite_class">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subsite_class" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="PublishDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="DefaultImageId" Type="bigint" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="回覆留言">
+          <Key>
+            <PropertyRef Name="回覆留言編號" />
+          </Key>
+          <Property Name="回覆留言編號" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="回覆內容" Type="nvarchar" MaxLength="250" />
+          <Property Name="回覆時間" Type="datetime" Nullable="false" />
+          <Property Name="留言編號" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="收貨地址">
+          <Key>
+            <PropertyRef Name="流水號" />
+          </Key>
+          <Property Name="流水號" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="村里" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="收貨人" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="郵遞代碼" Type="int" Nullable="false" />
+          <Property Name="縣市代碼" Type="int" Nullable="false" />
+          <Property Name="訂單編號" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="訂單">
+          <Key>
+            <PropertyRef Name="訂單編號" />
+          </Key>
+          <Property Name="訂單編號" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="下單日期" Type="datetime" Nullable="false" />
+          <Property Name="出貨日期" Type="datetime" />
+          <Property Name="帳號" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="訂單明細">
+          <Key>
+            <PropertyRef Name="訂單編號" />
+          </Key>
+          <Property Name="訂單編號" Type="bigint" Nullable="false" />
+          <Property Name="商品編號" Type="bigint" Nullable="false" />
+          <Property Name="訂購數量" Type="int" Nullable="false" />
+          <Property Name="購買價格" Type="money" Nullable="false" />
+          <Property Name="買家留言" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="頁面主項">
+          <Key>
+            <PropertyRef Name="流水號" />
+          </Key>
+          <Property Name="流水號" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="主項標題" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="頁面細項">
+          <Key>
+            <PropertyRef Name="流水號" />
+          </Key>
+          <Property Name="流水號" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="主項流水號" Type="int" Nullable="false" />
+          <Property Name="細項標題" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="網址" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="員工使用記錄">
+          <Key>
+            <PropertyRef Name="流水號" />
+          </Key>
+          <Property Name="流水號" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="員工帳號" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="操作頁面" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="操作動作" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="操作時間" Type="datetime" Nullable="false" />
+          <Property Name="備註" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="員工帳號">
+          <Key>
+            <PropertyRef Name="員工帳號" />
+          </Key>
+          <Property Name="員工帳號" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="員工密碼" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="權限代碼" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="啟用" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="員工帳號基本資料">
+          <Key>
+            <PropertyRef Name="員工帳號" />
+          </Key>
+          <Property Name="員工帳號" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="身份證字號" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="部門代號" Type="int" Nullable="false" />
+          <Property Name="職稱代號" Type="int" Nullable="false" />
+          <Property Name="姓名" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="性別" Type="bit" Nullable="false" />
+          <Property Name="出生日期" Type="datetime" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="聯絡電話" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="郵遞代號" Type="int" Nullable="false" />
+          <Property Name="地址" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="在職" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="員工登入資料">
+          <Key>
+            <PropertyRef Name="流水號" />
+          </Key>
+          <Property Name="流水號" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="員工帳號" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="登入時間" Type="datetime" Nullable="false" />
+          <Property Name="登入ip" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="留言版">
+          <Key>
+            <PropertyRef Name="留言編號" />
+          </Key>
+          <Property Name="留言編號" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="帳號" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="留言時間" Type="datetime" Nullable="false" />
+          <Property Name="內容" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="商品編號" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="商品類別">
+          <Key>
+            <PropertyRef Name="商品類別代碼" />
+          </Key>
+          <Property Name="商品類別代碼" Type="int" Nullable="false" />
+          <Property Name="商品類別名稱" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="帳號使用權限">
+          <Key>
+            <PropertyRef Name="權限代碼" />
+          </Key>
+          <Property Name="權限代碼" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="權限名稱" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="部門">
+          <Key>
+            <PropertyRef Name="部門代號" />
+          </Key>
+          <Property Name="部門代號" Type="int" Nullable="false" />
+          <Property Name="部門名稱" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="郵遞區號">
+          <Key>
+            <PropertyRef Name="郵遞代碼" />
+          </Key>
+          <Property Name="郵遞代碼" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="郵遞區號" Type="int" Nullable="false" />
+          <Property Name="縣市代碼" Type="int" Nullable="false" />
+          <Property Name="鄉鎮市區" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="會員">
+          <Key>
+            <PropertyRef Name="帳號" />
+          </Key>
+          <Property Name="帳號" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="密碼" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="暱稱" Type="nvarchar" MaxLength="20" />
+          <Property Name="註冊日期" Type="datetime" Nullable="false" />
+          <Property Name="啟用日期" Type="datetime" />
+          <Property Name="停用日期" Type="datetime" />
+          <Property Name="啟用" Type="bit" Nullable="false" />
+          <Property Name="其他" Type="nvarchar" MaxLength="300" />
+          <Property Name="性別" Type="bit" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="市話" Type="varchar" MaxLength="20" />
+          <Property Name="手機" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="生日" Type="date" Nullable="false" />
+          <Property Name="權限代碼" Type="varchar" MaxLength="10" />
+          <Property Name="認證" Type="bit" Nullable="false" />
+          <Property Name="Validate" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="會員住址">
+          <Key>
+            <PropertyRef Name="帳號" />
+          </Key>
+          <Property Name="帳號" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="村里" Type="nvarchar" MaxLength="15" />
+          <Property Name="地址其他" Type="nvarchar" MaxLength="20" />
+          <Property Name="郵遞代碼" Type="int" Nullable="false" />
+          <Property Name="縣市代碼" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="會員登入記錄">
+          <Key>
+            <PropertyRef Name="流水號" />
+          </Key>
+          <Property Name="流水號" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="登入時間" Type="datetime" Nullable="false" />
+          <Property Name="登入ip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="帳號" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="縣市">
+          <Key>
+            <PropertyRef Name="縣市代碼" />
+          </Key>
+          <Property Name="縣市代碼" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="縣市" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="顯示" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="職稱">
+          <Key>
+            <PropertyRef Name="職稱代號" />
+          </Key>
+          <Property Name="職稱代號" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="職稱名稱" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'ShoppingCar.dbo.魔格網站資料' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="魔格網站資料">
+          <Key>
+            <PropertyRef Name="建立日期" />
+            <PropertyRef Name="員工帳號" />
+          </Key>
+          <Property Name="建立日期" Type="datetime" Nullable="false" />
+          <Property Name="魔格摘要" Type="nvarchar" MaxLength="500" />
+          <Property Name="logo圖片路徑" Type="nvarchar" MaxLength="500" />
+          <Property Name="background圖片路徑" Type="nvarchar" MaxLength="500" />
+          <Property Name="廣告圖片路徑" Type="nvarchar" MaxLength="500" />
+          <Property Name="員工帳號" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'ShoppingCar.dbo.權限範圍' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="權限範圍">
+          <Key>
+            <PropertyRef Name="權限代碼" />
+            <PropertyRef Name="T1" />
+            <PropertyRef Name="T2" />
+            <PropertyRef Name="T3" />
+            <PropertyRef Name="T4" />
+            <PropertyRef Name="T5" />
+            <PropertyRef Name="T6" />
+            <PropertyRef Name="T7" />
+            <PropertyRef Name="T8" />
+            <PropertyRef Name="T9" />
+            <PropertyRef Name="T10" />
+            <PropertyRef Name="T11" />
+          </Key>
+          <Property Name="權限代碼" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="T1" Type="bit" Nullable="false" />
+          <Property Name="T2" Type="bit" Nullable="false" />
+          <Property Name="T3" Type="bit" Nullable="false" />
+          <Property Name="T4" Type="bit" Nullable="false" />
+          <Property Name="T5" Type="bit" Nullable="false" />
+          <Property Name="T6" Type="bit" Nullable="false" />
+          <Property Name="T7" Type="bit" Nullable="false" />
+          <Property Name="T8" Type="bit" Nullable="false" />
+          <Property Name="T9" Type="bit" Nullable="false" />
+          <Property Name="T10" Type="bit" Nullable="false" />
+          <Property Name="T11" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'ShoppingCar.dbo.FindTodayMenu' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="FindTodayMenu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Shop_id" Type="int" />
+          <Property Name="Dish" Type="nvarchar" MaxLength="16" />
+          <Property Name="Price" Type="int" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'ShoppingCar.dbo.order_detail' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="order_detail">
+          <Key>
+            <PropertyRef Name="訂單編號" />
+            <PropertyRef Name="下單日期" />
+            <PropertyRef Name="購買人" />
+          </Key>
+          <Property Name="訂單編號" Type="bigint" Nullable="false" />
+          <Property Name="商品名稱" Type="nvarchar(max)" />
+          <Property Name="下單日期" Type="datetime" Nullable="false" />
+          <Property Name="出貨日期" Type="datetime" />
+          <Property Name="購買人" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="商品編號" Type="bigint" />
+          <Property Name="擁有者" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Function Name="IsTodayLunchDone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="orderdate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="p_Cs_Join" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cu_sid" Type="int" Mode="In" />
+          <Parameter Name="mg_sid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ShowAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ShowHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="TodayMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="TodayOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="TodayOrderPaid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="TodayShop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="TotalNumofP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="TotalOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="TotalPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UpdateTodayOnduty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="onduty1" Type="int" Mode="In" />
+          <Parameter Name="onduty2" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="ShoppingCarModelStoreContainer">
+          <EntitySet Name="Cs_Message" EntityType="Self.Cs_Message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cs_User" EntityType="Self.Cs_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Firm" EntityType="Self.Firm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="goods" EntityType="Self.goods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="goodstag" EntityType="Self.goodstag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="leaveAlone" EntityType="Self.leaveAlone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manager" EntityType="Self.Manager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="member_ad" EntityType="Self.member_ad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="member_infro" EntityType="Self.member_infro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="member_val" EntityType="Self.member_val" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductMaster" EntityType="Self.ProductMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shoppingCart" EntityType="Self.shoppingCart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="subsite_class" EntityType="Self.subsite_class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="test" EntityType="Self.test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="回覆留言" EntityType="Self.回覆留言" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="收貨地址" EntityType="Self.收貨地址" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="訂單" EntityType="Self.訂單" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="訂單明細" EntityType="Self.訂單明細" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="頁面主項" EntityType="Self.頁面主項" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="頁面細項" EntityType="Self.頁面細項" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="員工使用記錄" EntityType="Self.員工使用記錄" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="員工帳號" EntityType="Self.員工帳號" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="員工帳號基本資料" EntityType="Self.員工帳號基本資料" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="員工登入資料" EntityType="Self.員工登入資料" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="留言版" EntityType="Self.留言版" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="商品類別" EntityType="Self.商品類別" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="帳號使用權限" EntityType="Self.帳號使用權限" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="部門" EntityType="Self.部門" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="郵遞區號" EntityType="Self.郵遞區號" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="會員" EntityType="Self.會員" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="會員住址" EntityType="Self.會員住址" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="會員登入記錄" EntityType="Self.會員登入記錄" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="縣市" EntityType="Self.縣市" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="職稱" EntityType="Self.職稱" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="subsite" EntityType="Self.subsite" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [subsite].[subsite_id] AS [subsite_id], 
+    [subsite].[user_id] AS [user_id], 
+    [subsite].[name] AS [name], 
+    [subsite].[descrip] AS [descrip], 
+    [subsite].[subsite_class] AS [subsite_class], 
+    [subsite].[title_image] AS [title_image], 
+    [subsite].[subsite_logo] AS [subsite_logo]
+    FROM [dbo].[subsite] AS [subsite]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="魔格網站資料" EntityType="Self.魔格網站資料" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [魔格網站資料].[建立日期] AS [建立日期], 
+    [魔格網站資料].[魔格摘要] AS [魔格摘要], 
+    [魔格網站資料].[logo圖片路徑] AS [logo圖片路徑], 
+    [魔格網站資料].[background圖片路徑] AS [background圖片路徑], 
+    [魔格網站資料].[廣告圖片路徑] AS [廣告圖片路徑], 
+    [魔格網站資料].[員工帳號] AS [員工帳號]
+    FROM [dbo].[魔格網站資料] AS [魔格網站資料]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="權限範圍" EntityType="Self.權限範圍" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [權限範圍].[權限代碼] AS [權限代碼], 
+    [權限範圍].[T1] AS [T1], 
+    [權限範圍].[T2] AS [T2], 
+    [權限範圍].[T3] AS [T3], 
+    [權限範圍].[T4] AS [T4], 
+    [權限範圍].[T5] AS [T5], 
+    [權限範圍].[T6] AS [T6], 
+    [權限範圍].[T7] AS [T7], 
+    [權限範圍].[T8] AS [T8], 
+    [權限範圍].[T9] AS [T9], 
+    [權限範圍].[T10] AS [T10], 
+    [權限範圍].[T11] AS [T11]
+    FROM [dbo].[權限範圍] AS [權限範圍]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FindTodayMenu" EntityType="Self.FindTodayMenu" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FindTodayMenu].[id] AS [id], 
+    [FindTodayMenu].[Shop_id] AS [Shop_id], 
+    [FindTodayMenu].[Dish] AS [Dish], 
+    [FindTodayMenu].[Price] AS [Price]
+    FROM [dbo].[FindTodayMenu] AS [FindTodayMenu]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="order_detail" EntityType="Self.order_detail" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [order_detail].[訂單編號] AS [訂單編號], 
+    [order_detail].[商品名稱] AS [商品名稱], 
+    [order_detail].[下單日期] AS [下單日期], 
+    [order_detail].[出貨日期] AS [出貨日期], 
+    [order_detail].[購買人] AS [購買人], 
+    [order_detail].[商品編號] AS [商品編號], 
+    [order_detail].[擁有者] AS [擁有者]
+    FROM [dbo].[order_detail] AS [order_detail]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ShoppingCarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cs_Message">
+          <Key>
+            <PropertyRef Name="cm_sid" />
+            <PropertyRef Name="cu_sid" />
+          </Key>
+          <Property Name="cm_sid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cu_sid" Type="Int32" Nullable="false" />
+          <Property Name="cm_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cm_object" Type="Byte" Nullable="false" />
+          <Property Name="cm_desc" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cm_end" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cs_User">
+          <Key>
+            <PropertyRef Name="cu_sid" />
+          </Key>
+          <Property Name="cu_sid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cu_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cu_rtn" Type="Byte" Nullable="false" />
+          <Property Name="cu_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cu_utime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cu_stime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="mg_sid" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Firm">
+          <Key>
+            <PropertyRef Name="Firm_ID" />
+          </Key>
+          <Property Name="Firm_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firm_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Firm_Tel" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Firm_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Firm_Address" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Firm_Contact" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Firm_Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ChangeDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="goodstag">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tagname" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="leaveAlone">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MembersCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="JobTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FromTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TimeUp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ByDuties" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApplicationTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="mg_sid" />
+          </Key>
+          <Property Name="mg_sid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mg_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="last_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="mg_id" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="member_ad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Zipcode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="country" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="member_infro">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="nikename" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="Boolean" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone1" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="phone2" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="birthday_y" Type="DateTime" Precision="0" />
+          <Property Name="birthday_m" Type="DateTime" Precision="0" />
+          <Property Name="birthday_d" Type="DateTime" Precision="0" />
+          <Property Name="address" Type="Int64" />
+        </EntityType>
+        <EntityType Name="member_val">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="account" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="enable" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ProductMaster">
+          <Key>
+            <PropertyRef Name="Product_ID" />
+          </Key>
+          <Property Name="Product_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Product_Gencod" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Safe_Stock" Type="Int64" Nullable="false" />
+          <Property Name="Stock" Type="Int32" Nullable="false" />
+          <Property Name="ChangeDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="pciture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="Purchase_ID" />
+          </Key>
+          <Property Name="Purchase_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firm_ID" Type="Int32" Nullable="false" />
+          <Property Name="Product_ID" Type="Int32" Nullable="false" />
+          <Property Name="IN_Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Purchase_Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="IN_Date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="Sale_ID" />
+          </Key>
+          <Property Name="Sale_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_ID" Type="Int32" Nullable="false" />
+          <Property Name="Sale_Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Sale_Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="SaleDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="shoppingCart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="member_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="goods_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="quantity" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="subsite_class">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subsite_class1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="回覆留言">
+          <Key>
+            <PropertyRef Name="回覆留言編號" />
+          </Key>
+          <Property Name="回覆留言編號" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="回覆內容" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="回覆時間" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="留言編號" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="收貨地址">
+          <Key>
+            <PropertyRef Name="流水號" />
+          </Key>
+          <Property Name="流水號" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="村里" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="收貨人" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="郵遞代碼" Type="Int32" Nullable="false" />
+          <Property Name="縣市代碼" Type="Int32" Nullable="false" />
+          <Property Name="訂單編號" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="訂單">
+          <Key>
+            <PropertyRef Name="訂單編號" />
+          </Key>
+          <Property Name="訂單編號" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="下單日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="出貨日期" Type="DateTime" Precision="3" />
+          <Property Name="帳號" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="頁面主項">
+          <Key>
+            <PropertyRef Name="流水號" />
+          </Key>
+          <Property Name="流水號" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="主項標題" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="頁面細項">
+          <Key>
+            <PropertyRef Name="流水號" />
+          </Key>
+          <Property Name="流水號" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="主項流水號" Type="Int32" Nullable="false" />
+          <Property Name="細項標題" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="網址" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="員工使用記錄">
+          <Key>
+            <PropertyRef Name="流水號" />
+          </Key>
+          <Property Name="流水號" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="員工帳號" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="操作頁面" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="操作動作" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="操作時間" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="備註" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="員工登入資料">
+          <Key>
+            <PropertyRef Name="流水號" />
+          </Key>
+          <Property Name="流水號" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="員工帳號" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="登入時間" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="登入ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="留言版">
+          <Key>
+            <PropertyRef Name="留言編號" />
+          </Key>
+          <Property Name="留言編號" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="帳號" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="留言時間" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="內容" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="商品編號" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="郵遞區號">
+          <Key>
+            <PropertyRef Name="郵遞代碼" />
+          </Key>
+          <Property Name="郵遞代碼" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="郵遞區號1" Type="Int32" Nullable="false" />
+          <Property Name="縣市代碼" Type="Int32" Nullable="false" />
+          <Property Name="鄉鎮市區" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="會員登入記錄">
+          <Key>
+            <PropertyRef Name="流水號" />
+          </Key>
+          <Property Name="流水號" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="登入時間" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="登入ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="帳號" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="縣市">
+          <Key>
+            <PropertyRef Name="縣市代碼" />
+          </Key>
+          <Property Name="縣市代碼" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="縣市1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="顯示" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="職稱">
+          <Key>
+            <PropertyRef Name="職稱代號" />
+          </Key>
+          <Property Name="職稱代號" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="職稱名稱" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="good">
+          <Key>
+            <PropertyRef Name="商品編號" />
+            <PropertyRef Name="帳號" />
+            <PropertyRef Name="商品名稱" />
+            <PropertyRef Name="庫存量" />
+            <PropertyRef Name="單價" />
+            <PropertyRef Name="上架時間" />
+            <PropertyRef Name="下架時間" />
+            <PropertyRef Name="商品類別代碼" />
+          </Key>
+          <Property Name="商品編號" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="帳號" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="商品名稱" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="商品摘要" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="商品明細" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="庫存量" Type="Int32" Nullable="false" />
+          <Property Name="單價" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="上架時間" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="下架時間" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="商品小圖片" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="商品大圖片1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="商品大圖片2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="商品大圖片3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="編輯" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="商品類別代碼" Type="Int32" Nullable="false" />
+          <Property Name="停權" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="subsite">
+          <Key>
+            <PropertyRef Name="subsite_id" />
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="subsite_id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descrip" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="subsite_class" Type="Int32" />
+          <Property Name="title_image" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="subsite_logo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="28" Scale="3" />
+          <Property Name="PublishDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="DefaultImageId" Type="Int64" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="訂單明細">
+          <Key>
+            <PropertyRef Name="訂單編號" />
+            <PropertyRef Name="商品編號" />
+            <PropertyRef Name="訂購數量" />
+            <PropertyRef Name="購買價格" />
+          </Key>
+          <Property Name="訂單編號" Type="Int64" Nullable="false" />
+          <Property Name="商品編號" Type="Int64" Nullable="false" />
+          <Property Name="訂購數量" Type="Int32" Nullable="false" />
+          <Property Name="購買價格" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="買家留言" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="員工帳號">
+          <Key>
+            <PropertyRef Name="員工帳號1" />
+            <PropertyRef Name="員工密碼" />
+            <PropertyRef Name="權限代碼" />
+            <PropertyRef Name="啟用" />
+          </Key>
+          <Property Name="員工帳號1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="員工密碼" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="權限代碼" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="啟用" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="員工帳號基本資料">
+          <Key>
+            <PropertyRef Name="員工帳號" />
+            <PropertyRef Name="身份證字號" />
+            <PropertyRef Name="部門代號" />
+            <PropertyRef Name="職稱代號" />
+            <PropertyRef Name="姓名" />
+            <PropertyRef Name="性別" />
+            <PropertyRef Name="出生日期" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="聯絡電話" />
+            <PropertyRef Name="郵遞代號" />
+            <PropertyRef Name="地址" />
+            <PropertyRef Name="在職" />
+          </Key>
+          <Property Name="員工帳號" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="身份證字號" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="部門代號" Type="Int32" Nullable="false" />
+          <Property Name="職稱代號" Type="Int32" Nullable="false" />
+          <Property Name="姓名" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="性別" Type="Boolean" Nullable="false" />
+          <Property Name="出生日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="聯絡電話" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="郵遞代號" Type="Int32" Nullable="false" />
+          <Property Name="地址" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="在職" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="商品類別">
+          <Key>
+            <PropertyRef Name="商品類別代碼" />
+            <PropertyRef Name="商品類別名稱" />
+          </Key>
+          <Property Name="商品類別代碼" Type="Int32" Nullable="false" />
+          <Property Name="商品類別名稱" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="帳號使用權限">
+          <Key>
+            <PropertyRef Name="權限代碼" />
+            <PropertyRef Name="權限名稱" />
+          </Key>
+          <Property Name="權限代碼" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="權限名稱" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="部門">
+          <Key>
+            <PropertyRef Name="部門代號" />
+            <PropertyRef Name="部門名稱" />
+          </Key>
+          <Property Name="部門代號" Type="Int32" Nullable="false" />
+          <Property Name="部門名稱" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="會員">
+          <Key>
+            <PropertyRef Name="密碼" />
+            <PropertyRef Name="註冊日期" />
+            <PropertyRef Name="啟用" />
+            <PropertyRef Name="性別" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="手機" />
+            <PropertyRef Name="生日" />
+            <PropertyRef Name="認證" />
+            <PropertyRef Name="Validate" />
+            <PropertyRef Name="帳號" />
+          </Key>
+          <Property Name="帳號" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="密碼" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="暱稱" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="註冊日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="啟用日期" Type="DateTime" Precision="3" />
+          <Property Name="停用日期" Type="DateTime" Precision="3" />
+          <Property Name="啟用" Type="Boolean" Nullable="false" />
+          <Property Name="其他" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="性別" Type="Boolean" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="市話" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="手機" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="生日" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="權限代碼" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="認證" Type="Boolean" Nullable="false" />
+          <Property Name="Validate" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="會員住址">
+          <Key>
+            <PropertyRef Name="帳號" />
+            <PropertyRef Name="郵遞代碼" />
+            <PropertyRef Name="縣市代碼" />
+          </Key>
+          <Property Name="帳號" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="村里" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="地址其他" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="郵遞代碼" Type="Int32" Nullable="false" />
+          <Property Name="縣市代碼" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="魔格網站資料">
+          <Key>
+            <PropertyRef Name="建立日期" />
+            <PropertyRef Name="員工帳號" />
+          </Key>
+          <Property Name="建立日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="魔格摘要" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="logo圖片路徑" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="background圖片路徑" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="廣告圖片路徑" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="員工帳號" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="權限範圍">
+          <Key>
+            <PropertyRef Name="權限代碼" />
+            <PropertyRef Name="T1" />
+            <PropertyRef Name="T2" />
+            <PropertyRef Name="T3" />
+            <PropertyRef Name="T4" />
+            <PropertyRef Name="T5" />
+            <PropertyRef Name="T6" />
+            <PropertyRef Name="T7" />
+            <PropertyRef Name="T8" />
+            <PropertyRef Name="T9" />
+            <PropertyRef Name="T10" />
+            <PropertyRef Name="T11" />
+          </Key>
+          <Property Name="權限代碼" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="T1" Type="Boolean" Nullable="false" />
+          <Property Name="T2" Type="Boolean" Nullable="false" />
+          <Property Name="T3" Type="Boolean" Nullable="false" />
+          <Property Name="T4" Type="Boolean" Nullable="false" />
+          <Property Name="T5" Type="Boolean" Nullable="false" />
+          <Property Name="T6" Type="Boolean" Nullable="false" />
+          <Property Name="T7" Type="Boolean" Nullable="false" />
+          <Property Name="T8" Type="Boolean" Nullable="false" />
+          <Property Name="T9" Type="Boolean" Nullable="false" />
+          <Property Name="T10" Type="Boolean" Nullable="false" />
+          <Property Name="T11" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FindTodayMenu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Shop_id" Type="Int32" />
+          <Property Name="Dish" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" />
+        </EntityType>
+        <EntityType Name="order_detail">
+          <Key>
+            <PropertyRef Name="訂單編號" />
+            <PropertyRef Name="下單日期" />
+            <PropertyRef Name="購買人" />
+          </Key>
+          <Property Name="訂單編號" Type="Int64" Nullable="false" />
+          <Property Name="商品名稱" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="下單日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="出貨日期" Type="DateTime" Precision="3" />
+          <Property Name="購買人" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="商品編號" Type="Int64" />
+          <Property Name="擁有者" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="ShoppingCarEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cs_Message" EntityType="Self.Cs_Message" />
+          <EntitySet Name="Cs_User" EntityType="Self.Cs_User" />
+          <EntitySet Name="Firms" EntityType="Self.Firm" />
+          <EntitySet Name="goodstags" EntityType="Self.goodstag" />
+          <EntitySet Name="leaveAlones" EntityType="Self.leaveAlone" />
+          <EntitySet Name="Managers" EntityType="Self.Manager" />
+          <EntitySet Name="member_ad" EntityType="Self.member_ad" />
+          <EntitySet Name="member_infro" EntityType="Self.member_infro" />
+          <EntitySet Name="member_val" EntityType="Self.member_val" />
+          <EntitySet Name="ProductMasters" EntityType="Self.ProductMaster" />
+          <EntitySet Name="Purchases" EntityType="Self.Purchase" />
+          <EntitySet Name="Sales" EntityType="Self.Sale" />
+          <EntitySet Name="shoppingCarts" EntityType="Self.shoppingCart" />
+          <EntitySet Name="subsite_class" EntityType="Self.subsite_class" />
+          <EntitySet Name="回覆留言" EntityType="Self.回覆留言" />
+          <EntitySet Name="收貨地址" EntityType="Self.收貨地址" />
+          <EntitySet Name="訂單" EntityType="Self.訂單" />
+          <EntitySet Name="頁面主項" EntityType="Self.頁面主項" />
+          <EntitySet Name="頁面細項" EntityType="Self.頁面細項" />
+          <EntitySet Name="員工使用記錄" EntityType="Self.員工使用記錄" />
+          <EntitySet Name="員工登入資料" EntityType="Self.員工登入資料" />
+          <EntitySet Name="留言版" EntityType="Self.留言版" />
+          <EntitySet Name="郵遞區號" EntityType="Self.郵遞區號" />
+          <EntitySet Name="會員登入記錄" EntityType="Self.會員登入記錄" />
+          <EntitySet Name="縣市" EntityType="Self.縣市" />
+          <EntitySet Name="職稱" EntityType="Self.職稱" />
+          <EntitySet Name="goods" EntityType="Self.good" />
+          <EntitySet Name="subsites" EntityType="Self.subsite" />
+          <EntitySet Name="tests" EntityType="Self.test" />
+          <EntitySet Name="訂單明細" EntityType="Self.訂單明細" />
+          <EntitySet Name="員工帳號" EntityType="Self.員工帳號" />
+          <EntitySet Name="員工帳號基本資料" EntityType="Self.員工帳號基本資料" />
+          <EntitySet Name="商品類別" EntityType="Self.商品類別" />
+          <EntitySet Name="帳號使用權限" EntityType="Self.帳號使用權限" />
+          <EntitySet Name="部門" EntityType="Self.部門" />
+          <EntitySet Name="會員" EntityType="Self.會員" />
+          <EntitySet Name="會員住址" EntityType="Self.會員住址" />
+          <EntitySet Name="魔格網站資料" EntityType="Self.魔格網站資料" />
+          <EntitySet Name="權限範圍" EntityType="Self.權限範圍" />
+          <EntitySet Name="FindTodayMenus" EntityType="Self.FindTodayMenu" />
+          <EntitySet Name="order_detail" EntityType="Self.order_detail" />
+          <FunctionImport Name="IsTodayLunchDone" ReturnType="Collection(Int32)">
+          <Parameter Name="orderdate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="p_Cs_Join">
+            <Parameter Name="cu_sid" Mode="In" Type="Int32" />
+            <Parameter Name="mg_sid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ShowAll" ReturnType="Collection(ShoppingCarModel.ShowAll_Result)" />
+          <FunctionImport Name="ShowHistory" ReturnType="Collection(ShoppingCarModel.ShowHistory_Result)" />
+          <FunctionImport Name="TodayMenu" ReturnType="Collection(ShoppingCarModel.TodayMenu_Result)" />
+          <FunctionImport Name="TodayOrder" ReturnType="Collection(ShoppingCarModel.TodayOrder_Result)" />
+          <FunctionImport Name="TodayOrderPaid" ReturnType="Collection(ShoppingCarModel.TodayOrderPaid_Result)" />
+          <FunctionImport Name="TodayShop" ReturnType="Collection(ShoppingCarModel.TodayShop_Result)" />
+          <FunctionImport Name="TotalNumofP" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="TotalOrder" ReturnType="Collection(ShoppingCarModel.TotalOrder_Result)" />
+          <FunctionImport Name="TotalPrice" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="UpdateTodayOnduty">
+            <Parameter Name="onduty1" Mode="In" Type="Int32" />
+            <Parameter Name="onduty2" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ShowAll_Result">
+          <Property Type="DateTime" Name="日期" Nullable="true" />
+          <Property Type="Int32" Name="值日生" Nullable="true" />
+          <Property Type="Int32" Name="值日生1" Nullable="true" />
+          <Property Type="Int32" Name="學號" Nullable="true" />
+          <Property Type="String" Name="店家名稱" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="便當" Nullable="true" MaxLength="16" />
+        </ComplexType>
+        <ComplexType Name="ShowHistory_Result">
+          <Property Type="DateTime" Name="orderdate" Nullable="true" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Dish" Nullable="true" MaxLength="16" />
+          <Property Type="String" Name="Dish1" Nullable="true" MaxLength="16" />
+        </ComplexType>
+        <ComplexType Name="TodayMenu_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="Shop_id" Nullable="true" />
+          <Property Type="String" Name="Dish" Nullable="true" MaxLength="16" />
+          <Property Type="Int32" Name="Price" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="TodayOrder_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="學號" Nullable="true" />
+          <Property Type="String" Name="料理名" Nullable="true" MaxLength="16" />
+          <Property Type="Int32" Name="價錢" Nullable="true" />
+          <Property Type="Boolean" Name="已付款" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="TodayOrderPaid_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="學號" Nullable="true" />
+          <Property Type="String" Name="料理名" Nullable="true" MaxLength="16" />
+          <Property Type="Int32" Name="價錢" Nullable="true" />
+          <Property Type="Boolean" Name="已付款" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="TodayShop_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="DateTime" Name="orderdate" Nullable="true" />
+          <Property Type="Int32" Name="shop_id" Nullable="true" />
+          <Property Type="Int32" Name="onduty1" Nullable="true" />
+          <Property Type="Int32" Name="onduty2" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="TotalOrder_Result">
+          <Property Type="String" Name="料理名" Nullable="true" MaxLength="16" />
+          <Property Type="Int32" Name="數量總計" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ShoppingCarModelStoreContainer" CdmEntityContainer="ShoppingCarEntities">
+          <EntitySetMapping Name="Cs_Message">
+            <EntityTypeMapping TypeName="ShoppingCarModel.Cs_Message">
+              <MappingFragment StoreEntitySet="Cs_Message">
+                <ScalarProperty Name="cm_sid" ColumnName="cm_sid" />
+                <ScalarProperty Name="cu_sid" ColumnName="cu_sid" />
+                <ScalarProperty Name="cm_time" ColumnName="cm_time" />
+                <ScalarProperty Name="cm_object" ColumnName="cm_object" />
+                <ScalarProperty Name="cm_desc" ColumnName="cm_desc" />
+                <ScalarProperty Name="cm_end" ColumnName="cm_end" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cs_User">
+            <EntityTypeMapping TypeName="ShoppingCarModel.Cs_User">
+              <MappingFragment StoreEntitySet="Cs_User">
+                <ScalarProperty Name="cu_sid" ColumnName="cu_sid" />
+                <ScalarProperty Name="cu_name" ColumnName="cu_name" />
+                <ScalarProperty Name="cu_rtn" ColumnName="cu_rtn" />
+                <ScalarProperty Name="cu_time" ColumnName="cu_time" />
+                <ScalarProperty Name="cu_utime" ColumnName="cu_utime" />
+                <ScalarProperty Name="cu_stime" ColumnName="cu_stime" />
+                <ScalarProperty Name="mg_sid" ColumnName="mg_sid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Firms">
+            <EntityTypeMapping TypeName="ShoppingCarModel.Firm">
+              <MappingFragment StoreEntitySet="Firm">
+                <ScalarProperty Name="Firm_ID" ColumnName="Firm_ID" />
+                <ScalarProperty Name="Firm_Name" ColumnName="Firm_Name" />
+                <ScalarProperty Name="Firm_Tel" ColumnName="Firm_Tel" />
+                <ScalarProperty Name="Firm_Email" ColumnName="Firm_Email" />
+                <ScalarProperty Name="Firm_Address" ColumnName="Firm_Address" />
+                <ScalarProperty Name="Firm_Contact" ColumnName="Firm_Contact" />
+                <ScalarProperty Name="Firm_Phone" ColumnName="Firm_Phone" />
+                <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="goodstags">
+            <EntityTypeMapping TypeName="ShoppingCarModel.goodstag">
+              <MappingFragment StoreEntitySet="goodstag">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tagname" ColumnName="tagname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="leaveAlones">
+            <EntityTypeMapping TypeName="ShoppingCarModel.leaveAlone">
+              <MappingFragment StoreEntitySet="leaveAlone">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MembersCode" ColumnName="MembersCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="FromTime" ColumnName="FromTime" />
+                <ScalarProperty Name="TimeUp" ColumnName="TimeUp" />
+                <ScalarProperty Name="ByDuties" ColumnName="ByDuties" />
+                <ScalarProperty Name="ApplicationTime" ColumnName="ApplicationTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Managers">
+            <EntityTypeMapping TypeName="ShoppingCarModel.Manager">
+              <MappingFragment StoreEntitySet="Manager">
+                <ScalarProperty Name="mg_sid" ColumnName="mg_sid" />
+                <ScalarProperty Name="mg_name" ColumnName="mg_name" />
+                <ScalarProperty Name="last_date" ColumnName="last_date" />
+                <ScalarProperty Name="mg_id" ColumnName="mg_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="member_ad">
+            <EntityTypeMapping TypeName="ShoppingCarModel.member_ad">
+              <MappingFragment StoreEntitySet="member_ad">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="address" ColumnName="address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="member_infro">
+            <EntityTypeMapping TypeName="ShoppingCarModel.member_infro">
+              <MappingFragment StoreEntitySet="member_infro">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="nikename" ColumnName="nikename" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone1" ColumnName="phone1" />
+                <ScalarProperty Name="phone2" ColumnName="phone2" />
+                <ScalarProperty Name="birthday_y" ColumnName="birthday_y" />
+                <ScalarProperty Name="birthday_m" ColumnName="birthday_m" />
+                <ScalarProperty Name="birthday_d" ColumnName="birthday_d" />
+                <ScalarProperty Name="address" ColumnName="address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="member_val">
+            <EntityTypeMapping TypeName="ShoppingCarModel.member_val">
+              <MappingFragment StoreEntitySet="member_val">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="account" ColumnName="account" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="enable" ColumnName="enable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductMasters">
+            <EntityTypeMapping TypeName="ShoppingCarModel.ProductMaster">
+              <MappingFragment StoreEntitySet="ProductMaster">
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+                <ScalarProperty Name="Product_Gencod" ColumnName="Product_Gencod" />
+                <ScalarProperty Name="Safe_Stock" ColumnName="Safe_Stock" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+                <ScalarProperty Name="pciture" ColumnName="pciture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchases">
+            <EntityTypeMapping TypeName="ShoppingCarModel.Purchase">
+              <MappingFragment StoreEntitySet="Purchase">
+                <ScalarProperty Name="Purchase_ID" ColumnName="Purchase_ID" />
+                <ScalarProperty Name="Firm_ID" ColumnName="Firm_ID" />
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+                <ScalarProperty Name="IN_Quantity" ColumnName="IN_Quantity" />
+                <ScalarProperty Name="Purchase_Price" ColumnName="Purchase_Price" />
+                <ScalarProperty Name="IN_Date" ColumnName="IN_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="ShoppingCarModel.Sale">
+              <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="Sale_ID" ColumnName="Sale_ID" />
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+                <ScalarProperty Name="Sale_Quantity" ColumnName="Sale_Quantity" />
+                <ScalarProperty Name="Sale_Price" ColumnName="Sale_Price" />
+                <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shoppingCarts">
+            <EntityTypeMapping TypeName="ShoppingCarModel.shoppingCart">
+              <MappingFragment StoreEntitySet="shoppingCart">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="goods_id" ColumnName="goods_id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subsite_class">
+            <EntityTypeMapping TypeName="ShoppingCarModel.subsite_class">
+              <MappingFragment StoreEntitySet="subsite_class">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="subsite_class1" ColumnName="subsite_class" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="回覆留言">
+            <EntityTypeMapping TypeName="ShoppingCarModel.回覆留言">
+              <MappingFragment StoreEntitySet="回覆留言">
+                <ScalarProperty Name="回覆留言編號" ColumnName="回覆留言編號" />
+                <ScalarProperty Name="回覆內容" ColumnName="回覆內容" />
+                <ScalarProperty Name="回覆時間" ColumnName="回覆時間" />
+                <ScalarProperty Name="留言編號" ColumnName="留言編號" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="收貨地址">
+            <EntityTypeMapping TypeName="ShoppingCarModel.收貨地址">
+              <MappingFragment StoreEntitySet="收貨地址">
+                <ScalarProperty Name="流水號" ColumnName="流水號" />
+                <ScalarProperty Name="村里" ColumnName="村里" />
+                <ScalarProperty Name="收貨人" ColumnName="收貨人" />
+                <ScalarProperty Name="郵遞代碼" ColumnName="郵遞代碼" />
+                <ScalarProperty Name="縣市代碼" ColumnName="縣市代碼" />
+                <ScalarProperty Name="訂單編號" ColumnName="訂單編號" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="訂單">
+            <EntityTypeMapping TypeName="ShoppingCarModel.訂單">
+              <MappingFragment StoreEntitySet="訂單">
+                <ScalarProperty Name="訂單編號" ColumnName="訂單編號" />
+                <ScalarProperty Name="下單日期" ColumnName="下單日期" />
+                <ScalarProperty Name="出貨日期" ColumnName="出貨日期" />
+                <ScalarProperty Name="帳號" ColumnName="帳號" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="頁面主項">
+            <EntityTypeMapping TypeName="ShoppingCarModel.頁面主項">
+              <MappingFragment StoreEntitySet="頁面主項">
+                <ScalarProperty Name="流水號" ColumnName="流水號" />
+                <ScalarProperty Name="主項標題" ColumnName="主項標題" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="頁面細項">
+            <EntityTypeMapping TypeName="ShoppingCarModel.頁面細項">
+              <MappingFragment StoreEntitySet="頁面細項">
+                <ScalarProperty Name="流水號" ColumnName="流水號" />
+                <ScalarProperty Name="主項流水號" ColumnName="主項流水號" />
+                <ScalarProperty Name="細項標題" ColumnName="細項標題" />
+                <ScalarProperty Name="網址" ColumnName="網址" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="員工使用記錄">
+            <EntityTypeMapping TypeName="ShoppingCarModel.員工使用記錄">
+              <MappingFragment StoreEntitySet="員工使用記錄">
+                <ScalarProperty Name="流水號" ColumnName="流水號" />
+                <ScalarProperty Name="員工帳號" ColumnName="員工帳號" />
+                <ScalarProperty Name="操作頁面" ColumnName="操作頁面" />
+                <ScalarProperty Name="操作動作" ColumnName="操作動作" />
+                <ScalarProperty Name="操作時間" ColumnName="操作時間" />
+                <ScalarProperty Name="備註" ColumnName="備註" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="員工登入資料">
+            <EntityTypeMapping TypeName="ShoppingCarModel.員工登入資料">
+              <MappingFragment StoreEntitySet="員工登入資料">
+                <ScalarProperty Name="流水號" ColumnName="流水號" />
+                <ScalarProperty Name="員工帳號" ColumnName="員工帳號" />
+                <ScalarProperty Name="登入時間" ColumnName="登入時間" />
+                <ScalarProperty Name="登入ip" ColumnName="登入ip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="留言版">
+            <EntityTypeMapping TypeName="ShoppingCarModel.留言版">
+              <MappingFragment StoreEntitySet="留言版">
+                <ScalarProperty Name="留言編號" ColumnName="留言編號" />
+                <ScalarProperty Name="帳號" ColumnName="帳號" />
+                <ScalarProperty Name="留言時間" ColumnName="留言時間" />
+                <ScalarProperty Name="內容" ColumnName="內容" />
+                <ScalarProperty Name="商品編號" ColumnName="商品編號" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="郵遞區號">
+            <EntityTypeMapping TypeName="ShoppingCarModel.郵遞區號">
+              <MappingFragment StoreEntitySet="郵遞區號">
+                <ScalarProperty Name="郵遞代碼" ColumnName="郵遞代碼" />
+                <ScalarProperty Name="郵遞區號1" ColumnName="郵遞區號" />
+                <ScalarProperty Name="縣市代碼" ColumnName="縣市代碼" />
+                <ScalarProperty Name="鄉鎮市區" ColumnName="鄉鎮市區" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="會員登入記錄">
+            <EntityTypeMapping TypeName="ShoppingCarModel.會員登入記錄">
+              <MappingFragment StoreEntitySet="會員登入記錄">
+                <ScalarProperty Name="流水號" ColumnName="流水號" />
+                <ScalarProperty Name="登入時間" ColumnName="登入時間" />
+                <ScalarProperty Name="登入ip" ColumnName="登入ip" />
+                <ScalarProperty Name="帳號" ColumnName="帳號" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="縣市">
+            <EntityTypeMapping TypeName="ShoppingCarModel.縣市">
+              <MappingFragment StoreEntitySet="縣市">
+                <ScalarProperty Name="縣市代碼" ColumnName="縣市代碼" />
+                <ScalarProperty Name="縣市1" ColumnName="縣市" />
+                <ScalarProperty Name="顯示" ColumnName="顯示" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="職稱">
+            <EntityTypeMapping TypeName="ShoppingCarModel.職稱">
+              <MappingFragment StoreEntitySet="職稱">
+                <ScalarProperty Name="職稱代號" ColumnName="職稱代號" />
+                <ScalarProperty Name="職稱名稱" ColumnName="職稱名稱" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="goods">
+            <EntityTypeMapping TypeName="ShoppingCarModel.good">
+              <MappingFragment StoreEntitySet="goods">
+                <ScalarProperty Name="商品編號" ColumnName="商品編號" />
+                <ScalarProperty Name="帳號" ColumnName="帳號" />
+                <ScalarProperty Name="商品名稱" ColumnName="商品名稱" />
+                <ScalarProperty Name="商品摘要" ColumnName="商品摘要" />
+                <ScalarProperty Name="商品明細" ColumnName="商品明細" />
+                <ScalarProperty Name="庫存量" ColumnName="庫存量" />
+                <ScalarProperty Name="單價" ColumnName="單價" />
+                <ScalarProperty Name="上架時間" ColumnName="上架時間" />
+                <ScalarProperty Name="下架時間" ColumnName="下架時間" />
+                <ScalarProperty Name="商品小圖片" ColumnName="商品小圖片" />
+                <ScalarProperty Name="商品大圖片1" ColumnName="商品大圖片1" />
+                <ScalarProperty Name="商品大圖片2" ColumnName="商品大圖片2" />
+                <ScalarProperty Name="商品大圖片3" ColumnName="商品大圖片3" />
+                <ScalarProperty Name="編輯" ColumnName="編輯" />
+                <ScalarProperty Name="商品類別代碼" ColumnName="商品類別代碼" />
+                <ScalarProperty Name="停權" ColumnName="停權" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subsites">
+            <EntityTypeMapping TypeName="ShoppingCarModel.subsite">
+              <MappingFragment StoreEntitySet="subsite">
+                <ScalarProperty Name="subsite_id" ColumnName="subsite_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
+                <ScalarProperty Name="subsite_class" ColumnName="subsite_class" />
+                <ScalarProperty Name="title_image" ColumnName="title_image" />
+                <ScalarProperty Name="subsite_logo" ColumnName="subsite_logo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tests">
+            <EntityTypeMapping TypeName="ShoppingCarModel.test">
+              <MappingFragment StoreEntitySet="test">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="DefaultImageId" ColumnName="DefaultImageId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="訂單明細">
+            <EntityTypeMapping TypeName="ShoppingCarModel.訂單明細">
+              <MappingFragment StoreEntitySet="訂單明細">
+                <ScalarProperty Name="訂單編號" ColumnName="訂單編號" />
+                <ScalarProperty Name="商品編號" ColumnName="商品編號" />
+                <ScalarProperty Name="訂購數量" ColumnName="訂購數量" />
+                <ScalarProperty Name="購買價格" ColumnName="購買價格" />
+                <ScalarProperty Name="買家留言" ColumnName="買家留言" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="員工帳號">
+            <EntityTypeMapping TypeName="ShoppingCarModel.員工帳號">
+              <MappingFragment StoreEntitySet="員工帳號">
+                <ScalarProperty Name="員工帳號1" ColumnName="員工帳號" />
+                <ScalarProperty Name="員工密碼" ColumnName="員工密碼" />
+                <ScalarProperty Name="權限代碼" ColumnName="權限代碼" />
+                <ScalarProperty Name="啟用" ColumnName="啟用" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="員工帳號基本資料">
+            <EntityTypeMapping TypeName="ShoppingCarModel.員工帳號基本資料">
+              <MappingFragment StoreEntitySet="員工帳號基本資料">
+                <ScalarProperty Name="員工帳號" ColumnName="員工帳號" />
+                <ScalarProperty Name="身份證字號" ColumnName="身份證字號" />
+                <ScalarProperty Name="部門代號" ColumnName="部門代號" />
+                <ScalarProperty Name="職稱代號" ColumnName="職稱代號" />
+                <ScalarProperty Name="姓名" ColumnName="姓名" />
+                <ScalarProperty Name="性別" ColumnName="性別" />
+                <ScalarProperty Name="出生日期" ColumnName="出生日期" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="聯絡電話" ColumnName="聯絡電話" />
+                <ScalarProperty Name="郵遞代號" ColumnName="郵遞代號" />
+                <ScalarProperty Name="地址" ColumnName="地址" />
+                <ScalarProperty Name="在職" ColumnName="在職" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="商品類別">
+            <EntityTypeMapping TypeName="ShoppingCarModel.商品類別">
+              <MappingFragment StoreEntitySet="商品類別">
+                <ScalarProperty Name="商品類別代碼" ColumnName="商品類別代碼" />
+                <ScalarProperty Name="商品類別名稱" ColumnName="商品類別名稱" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="帳號使用權限">
+            <EntityTypeMapping TypeName="ShoppingCarModel.帳號使用權限">
+              <MappingFragment StoreEntitySet="帳號使用權限">
+                <ScalarProperty Name="權限代碼" ColumnName="權限代碼" />
+                <ScalarProperty Name="權限名稱" ColumnName="權限名稱" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="部門">
+            <EntityTypeMapping TypeName="ShoppingCarModel.部門">
+              <MappingFragment StoreEntitySet="部門">
+                <ScalarProperty Name="部門代號" ColumnName="部門代號" />
+                <ScalarProperty Name="部門名稱" ColumnName="部門名稱" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="會員">
+            <EntityTypeMapping TypeName="ShoppingCarModel.會員">
+              <MappingFragment StoreEntitySet="會員">
+                <ScalarProperty Name="帳號" ColumnName="帳號" />
+                <ScalarProperty Name="密碼" ColumnName="密碼" />
+                <ScalarProperty Name="暱稱" ColumnName="暱稱" />
+                <ScalarProperty Name="註冊日期" ColumnName="註冊日期" />
+                <ScalarProperty Name="啟用日期" ColumnName="啟用日期" />
+                <ScalarProperty Name="停用日期" ColumnName="停用日期" />
+                <ScalarProperty Name="啟用" ColumnName="啟用" />
+                <ScalarProperty Name="其他" ColumnName="其他" />
+                <ScalarProperty Name="性別" ColumnName="性別" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="市話" ColumnName="市話" />
+                <ScalarProperty Name="手機" ColumnName="手機" />
+                <ScalarProperty Name="生日" ColumnName="生日" />
+                <ScalarProperty Name="權限代碼" ColumnName="權限代碼" />
+                <ScalarProperty Name="認證" ColumnName="認證" />
+                <ScalarProperty Name="Validate" ColumnName="Validate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="會員住址">
+            <EntityTypeMapping TypeName="ShoppingCarModel.會員住址">
+              <MappingFragment StoreEntitySet="會員住址">
+                <ScalarProperty Name="帳號" ColumnName="帳號" />
+                <ScalarProperty Name="村里" ColumnName="村里" />
+                <ScalarProperty Name="地址其他" ColumnName="地址其他" />
+                <ScalarProperty Name="郵遞代碼" ColumnName="郵遞代碼" />
+                <ScalarProperty Name="縣市代碼" ColumnName="縣市代碼" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="魔格網站資料">
+            <EntityTypeMapping TypeName="ShoppingCarModel.魔格網站資料">
+              <MappingFragment StoreEntitySet="魔格網站資料">
+                <ScalarProperty Name="建立日期" ColumnName="建立日期" />
+                <ScalarProperty Name="魔格摘要" ColumnName="魔格摘要" />
+                <ScalarProperty Name="logo圖片路徑" ColumnName="logo圖片路徑" />
+                <ScalarProperty Name="background圖片路徑" ColumnName="background圖片路徑" />
+                <ScalarProperty Name="廣告圖片路徑" ColumnName="廣告圖片路徑" />
+                <ScalarProperty Name="員工帳號" ColumnName="員工帳號" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="權限範圍">
+            <EntityTypeMapping TypeName="ShoppingCarModel.權限範圍">
+              <MappingFragment StoreEntitySet="權限範圍">
+                <ScalarProperty Name="權限代碼" ColumnName="權限代碼" />
+                <ScalarProperty Name="T1" ColumnName="T1" />
+                <ScalarProperty Name="T2" ColumnName="T2" />
+                <ScalarProperty Name="T3" ColumnName="T3" />
+                <ScalarProperty Name="T4" ColumnName="T4" />
+                <ScalarProperty Name="T5" ColumnName="T5" />
+                <ScalarProperty Name="T6" ColumnName="T6" />
+                <ScalarProperty Name="T7" ColumnName="T7" />
+                <ScalarProperty Name="T8" ColumnName="T8" />
+                <ScalarProperty Name="T9" ColumnName="T9" />
+                <ScalarProperty Name="T10" ColumnName="T10" />
+                <ScalarProperty Name="T11" ColumnName="T11" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FindTodayMenus">
+            <EntityTypeMapping TypeName="ShoppingCarModel.FindTodayMenu">
+              <MappingFragment StoreEntitySet="FindTodayMenu">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Shop_id" ColumnName="Shop_id" />
+                <ScalarProperty Name="Dish" ColumnName="Dish" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order_detail">
+            <EntityTypeMapping TypeName="ShoppingCarModel.order_detail">
+              <MappingFragment StoreEntitySet="order_detail">
+                <ScalarProperty Name="訂單編號" ColumnName="訂單編號" />
+                <ScalarProperty Name="商品名稱" ColumnName="商品名稱" />
+                <ScalarProperty Name="下單日期" ColumnName="下單日期" />
+                <ScalarProperty Name="出貨日期" ColumnName="出貨日期" />
+                <ScalarProperty Name="購買人" ColumnName="購買人" />
+                <ScalarProperty Name="商品編號" ColumnName="商品編號" />
+                <ScalarProperty Name="擁有者" ColumnName="擁有者" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="IsTodayLunchDone" FunctionName="ShoppingCarModel.Store.IsTodayLunchDone" />
+          <FunctionImportMapping FunctionImportName="p_Cs_Join" FunctionName="ShoppingCarModel.Store.p_Cs_Join" />
+          <FunctionImportMapping FunctionImportName="ShowAll" FunctionName="ShoppingCarModel.Store.ShowAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShoppingCarModel.ShowAll_Result">
+                <ScalarProperty Name="日期" ColumnName="日期" />
+                <ScalarProperty Name="值日生" ColumnName="值日生" />
+                <ScalarProperty Name="值日生1" ColumnName="值日生1" />
+                <ScalarProperty Name="學號" ColumnName="學號" />
+                <ScalarProperty Name="店家名稱" ColumnName="店家名稱" />
+                <ScalarProperty Name="便當" ColumnName="便當" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ShowHistory" FunctionName="ShoppingCarModel.Store.ShowHistory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShoppingCarModel.ShowHistory_Result">
+                <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Dish" ColumnName="Dish" />
+                <ScalarProperty Name="Dish1" ColumnName="Dish1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TodayMenu" FunctionName="ShoppingCarModel.Store.TodayMenu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShoppingCarModel.TodayMenu_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Shop_id" ColumnName="Shop_id" />
+                <ScalarProperty Name="Dish" ColumnName="Dish" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TodayOrder" FunctionName="ShoppingCarModel.Store.TodayOrder">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShoppingCarModel.TodayOrder_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="學號" ColumnName="學號" />
+                <ScalarProperty Name="料理名" ColumnName="料理名" />
+                <ScalarProperty Name="價錢" ColumnName="價錢" />
+                <ScalarProperty Name="已付款" ColumnName="已付款" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TodayOrderPaid" FunctionName="ShoppingCarModel.Store.TodayOrderPaid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShoppingCarModel.TodayOrderPaid_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="學號" ColumnName="學號" />
+                <ScalarProperty Name="料理名" ColumnName="料理名" />
+                <ScalarProperty Name="價錢" ColumnName="價錢" />
+                <ScalarProperty Name="已付款" ColumnName="已付款" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TodayShop" FunctionName="ShoppingCarModel.Store.TodayShop">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShoppingCarModel.TodayShop_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+                <ScalarProperty Name="shop_id" ColumnName="shop_id" />
+                <ScalarProperty Name="onduty1" ColumnName="onduty1" />
+                <ScalarProperty Name="onduty2" ColumnName="onduty2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TotalNumofP" FunctionName="ShoppingCarModel.Store.TotalNumofP" />
+          <FunctionImportMapping FunctionImportName="TotalOrder" FunctionName="ShoppingCarModel.Store.TotalOrder">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShoppingCarModel.TotalOrder_Result">
+                <ScalarProperty Name="料理名" ColumnName="料理名" />
+                <ScalarProperty Name="數量總計" ColumnName="數量總計" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TotalPrice" FunctionName="ShoppingCarModel.Store.TotalPrice" />
+          <FunctionImportMapping FunctionImportName="UpdateTodayOnduty" FunctionName="ShoppingCarModel.Store.UpdateTodayOnduty" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
