@@ -1,58 +1,24 @@
-﻿@*宣告取得資料Mode*@
-
-@model List<ShoppingCar.Models.good>
+﻿@model List<ShoppingCar.Models.test>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link href="~/Content/StyleMessageBoard.css" rel="stylesheet" />
-<script>
-    $(document).ready(function () {
-        var maxChar = 250;
-        $('#txt_areal').text(maxChar);
-        $('#left_SiteDisp_txtGcontent').keydown(function (event) {
-            var msg = $(this).val().length;
-            $('#txt_areal').text(maxChar - msg);
 
-        });
+<h2>Index</h2>
 
-        $('img[src="goodPicture/"]').remove();
-
-        var maxChar1 = 250;
-        $('#txt_areal3').text(maxChar1);
-        $('#left_SiteDisp_txtGcontent1').keydown(function (event) {
-            var msg1 = $(this).val().length;
-            $('#txt_areal3').text(maxChar1 - msg1);
-        });
-
-    });
-</script>
-<h2>商品列表</h2>
-@if (ViewBag.ResultMessage != null) //判斷是否有訊息,有就顯示
-{
-    @Html.Label("info",(string)ViewBag.ResultMessage,new {@class="text-info" })
-}
-
-@*用foreach取所有商品*@
-@foreach (var pd in this.Model)
-{<h1><label>@pd.商品名稱</label></h1>
-    <table class="table">
-        <tr>
-            <td style="height:500px; width:500px;"><img src="~/goodPicture/@pd.商品大圖片1" style="max-height:500px; max-width:500px;"> </td>
-            <td>
-                <lalbe style="font-size:18pt;">@pd.商品明細.ToString().Replace("/\n", "<br>")</lalbe>
-                <br /><br />
-                <label style="font-size:24px; color:#ff0066">網路價格:$</label>
-                <label style="Color:#ff0066; Font-Size:28px"> @pd.單價.ToString("#,#")</label>
-                <br /><br />
-                <input type="button" id="btShipper" class="btn btn-block" value="我要購買" />
-                <input type="button" id="btShoppingcar" value="加入購物車" class="btn btn-default" />
-            </td>
-        </tr>
-
-    </table>
-    <div><img src="~/goodPicture/@pd.商品大圖片2" style="max-height:500px; max-width:500px;" /></div>
-    <div>  <img src="~/goodPicture/@pd.商品大圖片3" style="max-height:500px; max-width:500px;" /></div>
-    <div><label id="1bEdit">@pd.編輯</label></div>
-}
+<table class="table">
+    <thead><tr><td>編號</td><td>名稱</td><td>描述</td><td>售價</td><td>庫存</td></tr></thead>
+    <tbody>
+        @foreach (var item in this.Model)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.Price</td>
+                <td>@item.Quantity</td>
+            </tr>
+        }
+    </tbody>
+</table>

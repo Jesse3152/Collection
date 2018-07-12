@@ -15,7 +15,7 @@ namespace ShoppingCar.Controllers
         public ActionResult Index()
         {
             //宣告商品取得列表 result
-            List<Models.good> result = new List<Models.good>();
+            List<Models.test> result = new List<Models.test>();
 
             //接收轉導成功的訊息
             ViewBag.ResultMessage = TempData["ResultMessage"];
@@ -24,7 +24,7 @@ namespace ShoppingCar.Controllers
             using (Models.ShoppingCarEntities db = new Models.ShoppingCarEntities())
             {
                 //使用LinQ語法抓取資料庫所需table
-                result = (from s in db.goods select s).ToList();
+                result = (from s in db.tests select s).ToList();
             }
 
             return View(result);
@@ -34,10 +34,11 @@ namespace ShoppingCar.Controllers
         {
             return View();
         }
-        //Insert資料回傳處理
-        [HttpPost]//限定只處理POST方法傳入的資料
 
-        public ActionResult Create(Models.good PostBack)
+
+        //Insert資料回傳處理
+        [HttpPost]//限定只處理POST方法傳入的資料     
+        public ActionResult Create(Models.test PostBack)
         {
             //驗證資料
             if (this.ModelState.IsValid)
@@ -45,24 +46,15 @@ namespace ShoppingCar.Controllers
                 //取資料庫所有資料
                 using (Models.ShoppingCarEntities db = new Models.ShoppingCarEntities())
                 {
-                    //將回傳入資料加入good
-                    db.goods.Add(PostBack);
+                    //將回傳入資料加入test
+                    db.tests.Add(PostBack);
 
-                    try
-                    {
+                  
                         //儲存異動資料
                         db.SaveChanges();
-                    }
-                    catch (Exception ex)
-                    {
-
-                        throw;
-                    }
-
-
-
+                   
                     //Insert成功訊息
-                    TempData["ResultMessage"] = string.Format("商品[{0}]新增成功", PostBack.商品名稱);
+                    TempData["ResultMessage"] = string.Format("商品[{0}]新增成功", PostBack.Name);
 
                     //導向GoodDisController/Index
                     return RedirectToAction("Index");
