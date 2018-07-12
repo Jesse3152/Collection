@@ -601,6 +601,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\GoodsDisp\Index.cshtml" />
     <Content Include="Views\GoodsDisp\Create.cshtml" />
+    <Content Include="Views\GoodsDisp\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

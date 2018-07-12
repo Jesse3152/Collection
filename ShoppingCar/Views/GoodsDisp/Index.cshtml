@@ -5,14 +5,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
+<h2>商品列表</h2>
+@if (ViewBag.ResultMessage != null)//判斷如果有訊息，則顯示。
+{
+    @Html.Label("info", (string)ViewBag.ResultMessage, new { @class = "text-info" })
+}
 <table class="table">
-    <thead><tr><td>編號</td><td>名稱</td><td>描述</td><td>售價</td><td>庫存</td></tr></thead>
+    <thead><tr><td>操作</td><td>編號</td><td>名稱</td><td>描述</td><td>售價</td><td>庫存</td></tr></thead>
     <tbody>
-        @foreach (var item in this.Model)
+        @foreach (var item in this.Model) /* 使用foreach將所有商品列出 */
         {
             <tr>
+                <td>
+                    @Html.ActionLink("編輯", "Edit", new { id = item.id }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("刪除", "Delete", new { id = item.id }, new { @class = "btn btn-default" })
+                </td>
+
                 <td>@item.id</td>
                 <td>@item.Name</td>
                 <td>@item.Description</td>
