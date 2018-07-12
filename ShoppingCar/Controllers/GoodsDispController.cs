@@ -14,7 +14,7 @@ namespace ShoppingCar.Controllers
         private Models.ShoppingCarEntities db = new Models.ShoppingCarEntities();
 
 
-        // GET: GoodsDisp
+        // GET: GoodsDisp      
         public ActionResult Index()
         {
             //宣告商品取得列表 result
@@ -69,7 +69,7 @@ namespace ShoppingCar.Controllers
         #endregion
 
         #region Edit 判斷ID是否存在
-
+        [HttpPost]
         public ActionResult Edit(int id)
         {
             //使用LinQ語法where 抓取資料庫所需table 
@@ -92,7 +92,7 @@ namespace ShoppingCar.Controllers
         #endregion
 
         #region Edit 資料回傳處理
-        [HttpPost] //限定只處理POST方法傳入的資料 
+   
         public ActionResult Edit(Models.test Postpack)
         {
             //驗証
@@ -120,6 +120,32 @@ namespace ShoppingCar.Controllers
                 return RedirectToAction("Index");
             }
             else return View(Postpack);//資料錯誤導向自己Edit頁面
+        }
+        #endregion
+
+        #region Delete
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var result = (from s in db.tests where s.id == id select s).FirstOrDefault();
+            //判斷ID是否有資料
+            if (result != default(Models.test))
+            {
+                //移除資料
+                db.tests.Remove(result);
+
+                //儲存變更
+                db.SaveChanges();
+
+                TempData["ResultMessage"] = string.Format("商品[{0}]成功刪除", result.Name);
+                return RedirectToAction("Index");
+            }
+            else //如果沒有資料顯示錯誤導回Index頁面
+            {
+                TempData["ResultMessage"] = "指定資料不存在,無法刪除,請重新操作";
+                return RedirectToAction("Index");
+            }
+
         }
         #endregion
     }
