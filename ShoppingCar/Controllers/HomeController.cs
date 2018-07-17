@@ -8,9 +8,11 @@ namespace ShoppingCar.Controllers
 {
     public class HomeController : Controller
     {
+        Models.ShoppingCarEntities db = new Models.ShoppingCarEntities();
         public ActionResult Index()
         {
-            return View();
+            var result = (from s in db.Products select s).ToList();
+            return View(result);
         }
 
         public ActionResult About()

@@ -1,4 +1,4 @@
-﻿@model List<ShoppingCar.Models.test>
+﻿@model IEnumerable<ShoppingCar.Models.Product>
 
 @{
     ViewBag.Title = "Index";
@@ -6,33 +6,37 @@
 }
 
 <h2>商品列表</h2>
+
 @if (ViewBag.ResultMessage != null)//判斷如果有訊息，則顯示。
 {
     @Html.Label("info", (string)ViewBag.ResultMessage, new { @class = "text-info" })
 }
+
 <h4> @Html.ActionLink("新增", "Create", "GoodsDisp", new { }, new { @class = "btn btn-default" })</h4>
+
 <table class="table">
 
-    <thead><tr><td>操作</td><td>編號</td><td>名稱</td><td>描述</td><td>售價</td><td>庫存</td></tr></thead>
+    <thead><tr><td>操作</td><td>商品圖</td><td>編號</td><td>名稱</td><td>描述</td><td>售價</td><td>庫存</td></tr></thead>
     <tbody>
         @foreach (var item in this.Model) /* 使用foreach將所有商品列出 */
         {
-            <tr>
-                <td>
-                    @Html.ActionLink("編輯", "Edit", new { id = item.id }, new { @class = "btn btn-default" })
-                    @*@Html.ActionLink("刪除", "Delete", new { id = item.id }, new { @class = "btn btn-default" })*@                  
-                </td>
-                <td>
-                    @*使用HTML Input 並隱藏id *@
-                    @using (Html.BeginForm("Delete", "GoodsDisp", FormMethod.Post, new { @class = "Delete" }))
-                    {@Html.Hidden("id", item.id)<input type="submit" value="刪除" class="btn btn-default">}
-                </td>
-                <td>@item.id</td>
-                <td>@item.Name</td>
-                <td>@item.Description</td>
-                <td>@item.Price</td>
-                <td>@item.Quantity</td>
-            </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("編輯", "Edit", new { id = item.Id }, new { @class = "btn btn-default" })
+                @*@Html.ActionLink("刪除", "Delete", new { id = item.id }, new { @class = "btn btn-default" })*@
+            </td>
+            <td>
+                @*使用HTML Input 並隱藏id *@
+                @using (Html.BeginForm("Delete", "GoodsDisp", FormMethod.Post, new { @class = "Delete" }))
+                {@Html.Hidden("id", item.Id)<input type="submit" value="刪除" class="btn btn-default">}
+            </td>
+            <td><img src="@item.DefaultImageURL" width="50" height="50" /></td>
+            <td>@item.Id</td>            
+            <td>@item.Name</td>
+            <td>@item.Description</td>
+            <td>@item.Price</td>
+            <td>@item.Quantity</td>
+        </tr>
         }
     </tbody>
 </table>

@@ -18,17 +18,18 @@ namespace ShoppingCar.Controllers
         public ActionResult Index()
         {
             //宣告商品取得列表 result
-            List<Models.test> result = new List<Models.test>();
+            List<Models.Product> result = new List<Models.Product>();
 
-            //接收轉導成功的訊息
+            //接收轉導成功的訊息(CUD)
             ViewBag.ResultMessage = TempData["ResultMessage"];
 
             //使用LinQ語法抓取資料庫所需table
-            result = (from s in db.tests select s).ToList();
+            result = (from s in db.Products select s).ToList();
 
             return View(result);
         }
         #region Insert
+        //Insert 新增頁面
         public ActionResult Create()
         {
             return View();
@@ -42,21 +43,21 @@ namespace ShoppingCar.Controllers
             if (this.ModelState.IsValid)
             {
                 //取資料庫所有資料
-                using (Models.ShoppingCarEntities db = new Models.ShoppingCarEntities())
-                {
-                    //將回傳入資料加入test
-                    db.tests.Add(PostBack);
+                //using (Models.ShoppingCarEntities db = new Models.ShoppingCarEntities())
+                //{
+                //將回傳入資料加入test
+                db.tests.Add(PostBack);
 
 
-                    //儲存異動資料
-                    db.SaveChanges();
+                //儲存異動資料
+                db.SaveChanges();
 
-                    //Insert成功訊息
-                    TempData["ResultMessage"] = string.Format("商品[{0}]新增成功", PostBack.Name);
+                //Insert成功訊息
+                TempData["ResultMessage"] = string.Format("商品[{0}]新增成功", PostBack.Name);
 
-                    //導向GoodDisController/Index
-                    return RedirectToAction("Index");
-                }
+                //導向GoodDisController/Index
+                return RedirectToAction("Index");
+                //}
             }
 
             //Insert失敗
@@ -69,15 +70,15 @@ namespace ShoppingCar.Controllers
         #endregion
 
         #region Edit 判斷ID是否存在
-        [HttpPost]
+
         public ActionResult Edit(int id)
         {
             //使用LinQ語法where 抓取資料庫所需table 
             //使用test.id抓取該筆資料
-            var result = (from s in db.tests where s.id == id select s).FirstOrDefault();
+            var result = (from s in db.Products where s.Id == id select s).FirstOrDefault();
 
             #region 判斷id是否有資料
-            if (result != default(Models.test))
+            if (result != default(Models.Product))
             {
                 return View(result);
             }
@@ -92,13 +93,15 @@ namespace ShoppingCar.Controllers
         #endregion
 
         #region Edit 資料回傳處理
-   
-        public ActionResult Edit(Models.test Postpack)
+        [HttpPost]
+        public ActionResult Edit(Models.Product Postpack)
         {
             //驗証
             if (this.ModelState.IsValid)
             {
-                var result = (from s in db.tests where s.id == Postpack.id select s).FirstOrDefault();
+                //使用LinQ語法where 抓取資料庫所需table 
+                //使用test.id抓取該筆資料
+                var result = (from s in db.Products where s.Id == Postpack.Id select s).FirstOrDefault();
 
                 //指定變動值 result原table的值,Postpack變動後的值
 
@@ -110,6 +113,7 @@ namespace ShoppingCar.Controllers
                 result.Status = Postpack.Status;
                 result.CategoryId = Postpack.CategoryId;
                 result.Description = Postpack.Description;
+                result.DefaultImageURL = Postpack.DefaultImageURL;
 
 
                 //儲存變動
@@ -126,13 +130,16 @@ namespace ShoppingCar.Controllers
         #region Delete
         [HttpPost]
         public ActionResult Delete(int id)
-        {
-            var result = (from s in db.tests where s.id == id select s).FirstOrDefault();
+
+        {    //使用LinQ語法where 抓取資料庫所需table 
+            //使用test.id抓取該筆資料
+            var result = (from s in db.Products where s.Id == id select s).FirstOrDefault();
+            
             //判斷ID是否有資料
-            if (result != default(Models.test))
+            if (result != default(Models.Product))
             {
                 //移除資料
-                db.tests.Remove(result);
+                db.Products.Remove(result);
 
                 //儲存變更
                 db.SaveChanges();

@@ -24,8 +24,11 @@
                     <li>@Html.ActionLink("首頁", "Index", "Home")</li>
                     <li>@Html.ActionLink("關於", "About", "Home")</li>
                     <li>@Html.ActionLink("連絡人", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("商品", "Index", "GoodsDisp")</li>
+                    <li>@Html.ActionLink("商品管理", "Index", "GoodsDisp")</li>
+                    <li>@Html.ActionLink("會員管理", "Index", "ManageUser")</li>
+                    <li>@Html.ActionLink("訂單管理", "Index", "ManageOrder")</li>
                 </ul>
+                @Html.Partial("_LoginPartial") @*註冊*@
             </div>
         </div>
     </div>
